@@ -1,0 +1,17 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.gen.dart"
+
+linter:
+  rules:
+    avoid_print: true
+    prefer_single_quotes: true
+    prefer_relative_imports: true
+    directives_ordering: true
+    sort_child_properties_last: true
+    sort_pub_dependencies: true
+    
