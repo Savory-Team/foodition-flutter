@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../components/components.dart';
-import '../../../core/constants/dimens.dart';
 import '../../../core/core.dart';
-import '../core/introduction_router.dart';
+import '../../home/core/home_router.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -13,7 +12,8 @@ class SplashPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Future.delayed(
       const Duration(seconds: 1),
-      () => context.goNamed(IntroductionRouter.introduction),
+      // FIXME: change to IntroductionRouter.introduction
+      () => context.goNamed(HomeRouter.root),
     );
 
     return Scaffold(
@@ -32,7 +32,6 @@ class SplashPage extends StatelessWidget {
               'Foodition',
               color: AppColors.primary,
             ),
-            const SpaceHeight(AppDimens.spacing16pt),
             const CustomText.h5(
               'Makanan hemat yang enak',
               color: AppColors.primary,

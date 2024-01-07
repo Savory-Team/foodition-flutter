@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/auth/auth.dart';
+import '../../features/home/home.dart';
 import '../../features/introduction/introduction.dart';
 
 class AppRouter {
@@ -10,6 +11,7 @@ class AppRouter {
     routes: [
       ...Introduction.routes,
       ...Auth.routes,
+      ...Home.routes,
     ],
     errorPageBuilder: (context, state) {
       return MaterialPage(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppDimens {
+  static const double spacing4pt = 4.0;
   static const double spacing8pt = 8.0;
   static const double spacing10pt = 10.0;
   static const double spacing12pt = 12.0;
@@ -26,6 +27,9 @@ class PaddingHorizontal {
 }
 
 class PaddingAll {
+  static const spacing8pt = EdgeInsets.all(AppDimens.spacing8pt);
+  static const spacing12pt = EdgeInsets.all(AppDimens.spacing12pt);
+  static const spacing16pt = EdgeInsets.all(AppDimens.spacing16pt);
   static const spacing20pt = EdgeInsets.all(AppDimens.spacing20pt);
   static const spacing32pt = EdgeInsets.all(AppDimens.spacing32pt);
   static const spacing64pt = EdgeInsets.all(AppDimens.spacing64pt);
@@ -33,6 +37,10 @@ class PaddingAll {
 }
 
 class AppBorderRadius {
+  static const radius4pt =
+      BorderRadius.all(Radius.circular(AppDimens.spacing4pt));
+  static const radius8pt =
+      BorderRadius.all(Radius.circular(AppDimens.spacing8pt));
   static const radius12pt =
       BorderRadius.all(Radius.circular(AppDimens.spacing12pt));
 }

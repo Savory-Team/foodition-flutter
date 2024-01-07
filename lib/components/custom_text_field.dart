@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../core/constants/dimens.dart';
 import '../core/core.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -41,6 +40,7 @@ class CustomTextField extends StatelessWidget {
             borderSide: BorderSide(color: Colors.grey),
           ),
           hintText: label,
+          hintStyle: const TextStyle(color: AppColors.hint),
         ),
       ),
     );

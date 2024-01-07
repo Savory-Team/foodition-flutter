@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../components/components.dart';
-import '../../../../core/constants/dimens.dart';
 import '../../../../core/core.dart';
 import '../../core/auth_router.dart';
 

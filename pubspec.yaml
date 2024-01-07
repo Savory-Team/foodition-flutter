@@ -7,6 +7,8 @@ environment:
   sdk: '>=3.2.3 <4.0.0'
 
 dependencies:
+  cached_network_image: ^3.3.1
+  carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
@@ -26,6 +28,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/banner/
     - assets/icons/
 
 flutter_gen:
