@@ -24,23 +24,10 @@ class LoginPage extends StatelessWidget {
             child: Assets.images.fooditionPrimary.image(),
           ),
           const SpaceHeight(AppDimens.spacing48pt),
-          const Text(
+          const CustomText.h1(
             'Login',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: AppDimens.spacing24pt,
-              fontWeight: FontWeight.w700,
-              color: AppColors.black,
-            ),
-          ),
-          const SpaceHeight(AppDimens.spacing16pt),
-          const Text(
-            'Enter your username and password to login',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: AppDimens.spacing16pt,
-              color: AppColors.black,
-            ),
+            color: AppColors.primary,
           ),
           const SpaceHeight(AppDimens.spacing32pt),
           CustomTextField(
@@ -60,7 +47,7 @@ class LoginPage extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: InkWell(
               onTap: () {},
-              child: const Text('Forgot Password?'),
+              child: const CustomText.h6('Forgot Password?'),
             ),
           ),
           const SpaceHeight(AppDimens.spacing20pt),

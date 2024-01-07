@@ -26,23 +26,9 @@ class RegisterPage extends StatelessWidget {
             child: Assets.images.fooditionPrimary.image(),
           ),
           const SpaceHeight(AppDimens.spacing48pt),
-          const Text(
+          const CustomText.h1(
             'Register',
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: AppDimens.spacing24pt,
-              fontWeight: FontWeight.w700,
-              color: AppColors.black,
-            ),
-          ),
-          const SpaceHeight(AppDimens.spacing16pt),
-          const Text(
-            'Enter your details to register',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: AppDimens.spacing16pt,
-              color: AppColors.black,
-            ),
           ),
           const SpaceHeight(AppDimens.spacing32pt),
           CustomTextField(

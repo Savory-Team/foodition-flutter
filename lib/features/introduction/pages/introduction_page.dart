@@ -18,20 +18,22 @@ class _IntroductionPageState extends State<IntroductionPage> {
   int currentIndex = 0;
   AssetGenImage image = Assets.images.rectangle;
   String text =
-      'Lorem ipsum dolor sit amet consectetur. Et viverra tristique sit euismod.';
+      'Selamat datang di Foodition, tempatnya makanan hemat dan istimewa untuk setiap selera!';
   String buttonTitle = 'Next';
 
   void nextTap(int index) {
     if (index == 0) {
       currentIndex++;
       image = Assets.images.rectangle;
-      text = 'Lorem ipsum dolor. Et viverra tristique sit euismod.';
+      text =
+          'Jelajahi kelezatan tanpa merusak anggaran Anda - Foodition, solusi hemat untuk lidah Anda!';
       buttonTitle = 'Next';
       setState(() {});
     } else if (index == 1) {
       currentIndex++;
       image = Assets.images.rectangle;
-      text = 'Lorem ipsum dolor sit amet. Et viverra tristique sit euismod.';
+      text =
+          'Nikmati kelezatan istimewa tanpa menguras dompet Anda, hanya di Foodition!';
       buttonTitle = 'Next';
       buttonTitle = 'Let\'s Start';
       setState(() {});
@@ -76,13 +78,9 @@ class _IntroductionPageState extends State<IntroductionPage> {
                         ),
                       ),
                       const SpaceHeight(AppDimens.spacing48pt),
-                      Text(
+                      CustomText.h5(
                         text,
                         textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: AppDimens.spacing18pt,
-                          fontWeight: FontWeight.w500,
-                        ),
                       ),
                       const SpaceHeight(AppDimens.spacing32pt),
                       Row(

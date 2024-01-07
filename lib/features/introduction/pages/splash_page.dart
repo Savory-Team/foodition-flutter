@@ -28,21 +28,14 @@ class SplashPage extends StatelessWidget {
               child: Assets.images.fooditionPrimary.image(width: 164.0),
             ),
             const SpaceHeight(AppDimens.spacing48pt),
-            const Text(
+            const CustomText.h1(
               'Foodition',
-              style: TextStyle(
-                fontSize: AppDimens.spacing32pt,
-                fontWeight: FontWeight.w700,
-                color: AppColors.primary,
-              ),
+              color: AppColors.primary,
             ),
             const SpaceHeight(AppDimens.spacing16pt),
-            const Text(
+            const CustomText.h5(
               'Makanan hemat yang enak',
-              style: TextStyle(
-                fontSize: AppDimens.spacing16pt,
-                color: AppColors.primary,
-              ),
+              color: AppColors.primary,
             ),
           ],
         ),
