@@ -17,7 +17,7 @@ class _RootPageState extends State<RootPage> {
     const HomePage(),
     const FavouritePage(),
     const ScanPage(),
-    const Center(child: Text('This Page')),
+    const HistoryPage(),
     const Center(child: Text('This Page')),
   ];
 

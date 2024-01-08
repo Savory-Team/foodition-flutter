@@ -33,6 +33,7 @@ class PaddingHorizontal {
 class PaddingAll {
   const PaddingAll._();
 
+  static const spacing4pt = EdgeInsets.all(AppDimens.spacing4pt);
   static const spacing8pt = EdgeInsets.all(AppDimens.spacing8pt);
   static const spacing12pt = EdgeInsets.all(AppDimens.spacing12pt);
   static const spacing16pt = EdgeInsets.all(AppDimens.spacing16pt);

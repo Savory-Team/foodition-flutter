@@ -79,6 +79,7 @@ class _ScanPageState extends State<ScanPage> {
               ),
               const SpaceHeight(AppDimens.spacing16pt),
               Button.filled(
+                disabled: xFile == null,
                 onPressed: () async {
                   await showDialog(
                     context: context,

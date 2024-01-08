@@ -35,6 +35,7 @@ class App extends StatelessWidget {
             ),
           ),
         ),
+        dividerTheme: const DividerThemeData(color: AppColors.stroke),
         scaffoldBackgroundColor: AppColors.white,
       ),
       routerDelegate: router.routerDelegate,
