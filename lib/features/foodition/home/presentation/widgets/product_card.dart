@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../components/components.dart';
 import '../../../../../core/core.dart';
+import '../../../core/core.dart';
 import '../../domain/models/models.dart';
 
 class ProductCard extends StatelessWidget {
@@ -12,7 +14,10 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => context.goNamed(
+        FooditionRouter.productDetail,
+        extra: data,
+      ),
       child: Container(
         decoration: ShapeDecoration(
           color: AppColors.white,

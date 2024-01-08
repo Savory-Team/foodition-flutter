@@ -52,73 +52,49 @@ class _IntroductionPageState extends State<IntroductionPage> {
               fit: BoxFit.fill),
           Align(
             alignment: Alignment.bottomCenter,
-            child: ClipRRect(
-              borderRadius: const BorderRadius.vertical(
-                  top: Radius.circular(AppDimens.spacing32pt)),
-              child: ColoredBox(
-                color: AppColors.white,
-                child: Padding(
-                  padding: PaddingHorizontal.spacing32pt,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
+            child: CustomBottomSheet(
+              content: Column(
+                children: [
+                  CustomText.h5(
+                    text,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SpaceHeight(AppDimens.spacing32pt),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SpaceHeight(AppDimens.spacing10pt),
-                      Container(
-                        width: 82,
-                        height: 6,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: ShapeDecoration(
-                          color: AppColors.grey,
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(AppDimens.spacing8pt),
-                          ),
-                        ),
+                      Icon(
+                        Icons.circle,
+                        color: currentIndex == 0
+                            ? AppColors.primary
+                            : AppColors.grey,
+                        size: AppDimens.spacing14pt,
                       ),
-                      const SpaceHeight(AppDimens.spacing48pt),
-                      CustomText.h5(
-                        text,
-                        textAlign: TextAlign.center,
+                      const SpaceHeight(AppDimens.spacing8pt),
+                      Icon(
+                        Icons.circle,
+                        color: currentIndex == 1
+                            ? AppColors.primary
+                            : AppColors.grey,
+                        size: AppDimens.spacing14pt,
                       ),
-                      const SpaceHeight(AppDimens.spacing32pt),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            color: currentIndex == 0
-                                ? AppColors.primary
-                                : AppColors.grey,
-                            size: AppDimens.spacing14pt,
-                          ),
-                          const SpaceHeight(AppDimens.spacing8pt),
-                          Icon(
-                            Icons.circle,
-                            color: currentIndex == 1
-                                ? AppColors.primary
-                                : AppColors.grey,
-                            size: AppDimens.spacing14pt,
-                          ),
-                          const SpaceHeight(AppDimens.spacing8pt),
-                          Icon(
-                            Icons.circle,
-                            color: currentIndex == 2
-                                ? AppColors.primary
-                                : AppColors.grey,
-                            size: AppDimens.spacing14pt,
-                          ),
-                          const SpaceHeight(AppDimens.spacing8pt),
-                        ],
+                      const SpaceHeight(AppDimens.spacing8pt),
+                      Icon(
+                        Icons.circle,
+                        color: currentIndex == 2
+                            ? AppColors.primary
+                            : AppColors.grey,
+                        size: AppDimens.spacing14pt,
                       ),
-                      const SpaceHeight(AppDimens.spacing48pt),
-                      Button.filled(
-                        onPressed: () => nextTap(currentIndex),
-                        label: buttonTitle,
-                      ),
-                      const SpaceHeight(AppDimens.spacing32pt),
+                      const SpaceHeight(AppDimens.spacing8pt),
                     ],
                   ),
-                ),
+                  const SpaceHeight(AppDimens.spacing48pt),
+                  Button.filled(
+                    onPressed: () => nextTap(currentIndex),
+                    label: buttonTitle,
+                  ),
+                ],
               ),
             ),
           ),

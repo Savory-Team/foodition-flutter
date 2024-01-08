@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 
+import '../home/domain/models/models.dart';
 import '../home/presentation/pages/pages.dart';
 
 part 'enums/root_tab.dart';
@@ -25,6 +26,16 @@ class FooditionRouter {
           path: searchPath,
           builder: (context, state) => const SearchPage(),
         ),
+        GoRoute(
+          name: productDetail,
+          path: productDetailPath,
+          builder: (context, state) {
+            final args = state.extra as ProductModel;
+            return ProductDetailPage(
+              data: args,
+            );
+          },
+        ),
       ],
     ),
   ];
@@ -36,4 +47,8 @@ class FooditionRouter {
   /// route for page [SearchPage]
   static const String search = 'search';
   static const String searchPath = 'search';
+
+  /// route for page [ProductDetailPage]
+  static const String productDetail = 'productDetail';
+  static const String productDetailPath = 'productDetail';
 }
