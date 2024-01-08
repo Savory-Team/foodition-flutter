@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 
+import '../../auth/domain/models/models.dart';
 import '../home/domain/models/models.dart';
 import '../home/presentation/pages/pages.dart';
 import '../profile/presentation/pages/pages.dart';
@@ -54,6 +55,14 @@ class FooditionRouter {
           name: notification,
           path: notificationPath,
           builder: (context, state) => const NotificationPage(),
+        ),
+        GoRoute(
+          name: editProfile,
+          path: editProfilePath,
+          builder: (context, state) {
+            final args = state.extra as UserModel;
+            return EditProfilePage(data: args);
+          },
         ),
       ],
     ),

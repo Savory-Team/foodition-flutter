@@ -1,9 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../components/components.dart';
 import '../../../../../core/assets/assets.dart';
 import '../../../../../core/constants/constants.dart';
+import '../../../../auth/auth.dart';
+import '../../../core/core.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -34,7 +37,14 @@ class ProfilePage extends StatelessWidget {
             title: const CustomText.h5('Fauzan Abdillah'),
             subtitle: const CustomText.h5('examle@email.com'),
             trailing: IconButton(
-              onPressed: () {},
+              onPressed: () => context.pushNamed(
+                FooditionRouter.editProfile,
+                extra: UserModel(
+                  imageUrl:
+                      'https://cdnwpseller.gramedia.net/wp-content/uploads/2023/02/luffy.jpg',
+                  name: 'Fauzan Abdillah',
+                ),
+              ),
               icon: Padding(
                 padding: PaddingAll.spacing4pt,
                 child: Assets.icons.edit.svg(),
@@ -77,7 +87,8 @@ class ProfilePage extends StatelessWidget {
                   ),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    onTap: () {},
+                    onTap: () =>
+                        context.pushNamed(FooditionRouter.notification),
                     leading: Assets.icons.notification.svg(),
                     title: const CustomText.h5('Notifikasi'),
                     subtitle:
