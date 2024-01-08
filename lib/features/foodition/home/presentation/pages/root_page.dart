@@ -31,63 +31,78 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: IndexedStack(index: _selectedIndex, children: _pages),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
-        selectedItemColor: AppColors.primary,
-        onTap: _onItemTapped,
-        items: [
-          BottomNavigationBarItem(
-            activeIcon: Assets.icons.home.svg(
-              colorFilter: const ColorFilter.mode(
-                AppColors.primary,
-                BlendMode.srcIn,
-              ),
+      bottomNavigationBar: Container(
+        height: 70.0,
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.black.withOpacity(0.1),
+              blurRadius: 2,
+              offset: const Offset(0, -2),
+              spreadRadius: 0,
+              blurStyle: BlurStyle.outer,
             ),
-            icon: Assets.icons.home.svg(),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: Assets.icons.favourite.svg(
-              colorFilter: const ColorFilter.mode(
-                AppColors.primary,
-                BlendMode.srcIn,
+          ],
+        ),
+        child: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedIndex,
+          selectedItemColor: AppColors.primary,
+          onTap: _onItemTapped,
+          items: [
+            BottomNavigationBarItem(
+              activeIcon: Assets.icons.home.svg(
+                colorFilter: const ColorFilter.mode(
+                  AppColors.primary,
+                  BlendMode.srcIn,
+                ),
               ),
+              icon: Assets.icons.home.svg(),
+              label: 'Home',
             ),
-            icon: Assets.icons.favourite.svg(),
-            label: 'Favourites',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: Assets.icons.scan.svg(
-              colorFilter: const ColorFilter.mode(
-                AppColors.primary,
-                BlendMode.srcIn,
+            BottomNavigationBarItem(
+              activeIcon: Assets.icons.favourite.svg(
+                colorFilter: const ColorFilter.mode(
+                  AppColors.primary,
+                  BlendMode.srcIn,
+                ),
               ),
+              icon: Assets.icons.favourite.svg(),
+              label: 'Favourites',
             ),
-            icon: Assets.icons.scan.svg(),
-            label: 'Scan',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: Assets.icons.history.svg(
-              colorFilter: const ColorFilter.mode(
-                AppColors.primary,
-                BlendMode.srcIn,
+            BottomNavigationBarItem(
+              activeIcon: Assets.icons.scan.svg(
+                colorFilter: const ColorFilter.mode(
+                  AppColors.primary,
+                  BlendMode.srcIn,
+                ),
               ),
+              icon: Assets.icons.scan.svg(),
+              label: 'Scan',
             ),
-            icon: Assets.icons.history.svg(),
-            label: 'History',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: Assets.icons.profile.svg(
-              colorFilter: const ColorFilter.mode(
-                AppColors.primary,
-                BlendMode.srcIn,
+            BottomNavigationBarItem(
+              activeIcon: Assets.icons.history.svg(
+                colorFilter: const ColorFilter.mode(
+                  AppColors.primary,
+                  BlendMode.srcIn,
+                ),
               ),
+              icon: Assets.icons.history.svg(),
+              label: 'History',
             ),
-            icon: Assets.icons.profile.svg(),
-            label: 'Profile',
-          ),
-        ],
+            BottomNavigationBarItem(
+              activeIcon: Assets.icons.profile.svg(
+                colorFilter: const ColorFilter.mode(
+                  AppColors.primary,
+                  BlendMode.srcIn,
+                ),
+              ),
+              icon: Assets.icons.profile.svg(),
+              label: 'Profile',
+            ),
+          ],
+        ),
       ),
     );
   }

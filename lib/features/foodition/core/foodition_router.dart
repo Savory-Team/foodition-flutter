@@ -35,6 +35,13 @@ class FooditionRouter {
               data: args,
             );
           },
+          routes: [
+            GoRoute(
+              name: checkoutSuccess,
+              path: checkoutSuccessPath,
+              builder: (context, state) => const CheckoutSuccessPage(),
+            ),
+          ],
         ),
       ],
     ),
@@ -51,4 +58,8 @@ class FooditionRouter {
   /// route for page [ProductDetailPage]
   static const String productDetail = 'productDetail';
   static const String productDetailPath = 'productDetail';
+
+  /// route for page [CheckoutSuccessPage]
+  static const String checkoutSuccess = 'checkoutSuccess';
+  static const String checkoutSuccessPath = 'checkoutSuccess';
 }
