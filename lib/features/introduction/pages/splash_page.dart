@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../components/components.dart';
 import '../../../core/core.dart';
-import '../../home/core/home_router.dart';
+import '../../foodition/core/foodition_router.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({super.key});
@@ -13,7 +13,7 @@ class SplashPage extends StatelessWidget {
     Future.delayed(
       const Duration(seconds: 1),
       // FIXME: change to IntroductionRouter.introduction
-      () => context.goNamed(HomeRouter.root),
+      () => context.goNamed(FooditionRouter.root),
     );
 
     return Scaffold(

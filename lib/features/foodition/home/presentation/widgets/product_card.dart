@@ -1,17 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../components/components.dart';
-import '../../../../core/core.dart';
+import '../../../../../components/components.dart';
+import '../../../../../core/core.dart';
 import '../../domain/models/models.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductModel data;
-
-  const ProductCard({
-    super.key,
-    required this.data,
-  });
+  const ProductCard({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +15,7 @@ class ProductCard extends StatelessWidget {
       onTap: () {},
       child: Container(
         decoration: ShapeDecoration(
-          color: Colors.white,
+          color: AppColors.white,
           shape: const RoundedRectangleBorder(
             borderRadius: AppBorderRadius.radius8pt,
           ),
@@ -41,6 +37,7 @@ class ProductCard extends StatelessWidget {
               borderRadius: AppBorderRadius.radius8pt,
               child: CachedNetworkImage(
                 imageUrl: data.imageUrl,
+                width: double.infinity,
                 height: 150.0,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => const Center(
@@ -54,11 +51,15 @@ class ProductCard extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CustomText.h5(data.name),
+                  Flexible(child: CustomText.h5(data.name, maxLines: 2)),
                   const SpaceHeight(8.0),
-                  const LabelIcon(
-                    icon: Icon(Icons.place_outlined),
-                    data: 'Jakarta Selatan',
+                  LabelIcon(
+                    icon: const Icon(
+                      Icons.place_outlined,
+                      size: 14.0,
+                    ),
+                    data: data.address,
+                    isFlexible: true,
                   ),
                   const SpaceHeight(8.0),
                   CustomText.h5(data.priceFormat),
@@ -86,7 +87,7 @@ class ProductCard extends StatelessWidget {
                     icon: const Icon(
                       Icons.star,
                       color: AppColors.yellow,
-                      size: 14.0,
+                      size: 18.0,
                     ),
                     data: '${data.rate}',
                   ),

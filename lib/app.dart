@@ -29,6 +29,11 @@ class App extends StatelessWidget {
           iconTheme: const IconThemeData(
             color: AppColors.black,
           ),
+          shape: Border(
+            bottom: BorderSide(
+              color: AppColors.black.withOpacity(0.5),
+            ),
+          ),
         ),
         scaffoldBackgroundColor: AppColors.white,
       ),

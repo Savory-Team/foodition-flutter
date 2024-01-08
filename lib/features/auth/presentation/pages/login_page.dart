@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../components/components.dart';
 import '../../../../core/core.dart';
-import '../../../home/home.dart';
+import '../../../foodition/core/core.dart';
 import '../../core/auth_router.dart';
 
 class LoginPage extends StatelessWidget {
@@ -47,7 +47,7 @@ class LoginPage extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: InkWell(
               onTap: () {
-                context.goNamed(HomeRouter.root);
+                context.goNamed(FooditionRouter.root);
               },
               child: const CustomText.h6('Forgot Password?'),
             ),

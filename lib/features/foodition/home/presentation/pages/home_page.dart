@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
-import '../../../../components/components.dart';
-import '../../../../core/core.dart';
+import '../../../../../components/components.dart';
+import '../../../../../core/core.dart';
+import '../../../core/core.dart';
 import '../../home.dart';
 import '../widgets/banner_slider.dart';
 import '../widgets/product_card.dart';
@@ -17,7 +19,6 @@ class HomePage extends StatelessWidget {
           'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
       categories: ['Seafood', 'Masakan Padang', 'Home Made'],
       address: 'Jln. Pahlawan, No.16, Kabupaten Sleman, Yogyakarta, 12345',
-      city: 'Sleman',
       rate: 4.8,
       isFavourite: false,
       stock: 5,
@@ -93,7 +94,7 @@ class HomePage extends StatelessWidget {
             Padding(
               padding: PaddingAll.spacing20pt,
               child: SearchInput(
-                onTap: () {},
+                onTap: () => context.goNamed(FooditionRouter.search),
               ),
             ),
             GridView.builder(
@@ -104,7 +105,7 @@ class HomePage extends StatelessWidget {
                 crossAxisCount: 2,
                 crossAxisSpacing: 12.0,
                 mainAxisSpacing: 12.0,
-                childAspectRatio: 0.48,
+                childAspectRatio: 0.5,
               ),
               itemCount: products.length,
               itemBuilder: (context, index) => ProductCard(

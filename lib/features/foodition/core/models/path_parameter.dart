@@ -1,4 +1,4 @@
-part of '../home_router.dart';
+part of '../foodition_router.dart';
 
 class PathParameters {
   final RootTab rootTab;

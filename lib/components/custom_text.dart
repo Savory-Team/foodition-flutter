@@ -10,6 +10,7 @@ class CustomText extends StatelessWidget {
   final Color color;
   final TextAlign? textAlign;
   final TextOverflow? overflow;
+  final int? maxLines;
 
   const CustomText.h1(
     this.data, {
@@ -19,6 +20,7 @@ class CustomText extends StatelessWidget {
     this.color = AppColors.black,
     this.textAlign,
     this.overflow,
+    this.maxLines,
   });
   const CustomText.h2(
     this.data, {
@@ -28,6 +30,7 @@ class CustomText extends StatelessWidget {
     this.color = AppColors.black,
     this.textAlign,
     this.overflow,
+    this.maxLines,
   });
   const CustomText.h3(
     this.data, {
@@ -37,6 +40,7 @@ class CustomText extends StatelessWidget {
     this.color = AppColors.black,
     this.textAlign,
     this.overflow,
+    this.maxLines,
   });
   const CustomText.h4(
     this.data, {
@@ -46,6 +50,7 @@ class CustomText extends StatelessWidget {
     this.color = AppColors.black,
     this.textAlign,
     this.overflow,
+    this.maxLines,
   });
   const CustomText.h5(
     this.data, {
@@ -55,6 +60,7 @@ class CustomText extends StatelessWidget {
     this.color = AppColors.black,
     this.textAlign,
     this.overflow,
+    this.maxLines,
   });
   const CustomText.h6(
     this.data, {
@@ -64,6 +70,7 @@ class CustomText extends StatelessWidget {
     this.color = AppColors.black,
     this.textAlign,
     this.overflow,
+    this.maxLines,
   });
   const CustomText.h7(
     this.data, {
@@ -73,6 +80,7 @@ class CustomText extends StatelessWidget {
     this.color = AppColors.black,
     this.textAlign,
     this.overflow,
+    this.maxLines,
   });
   const CustomText.h8(
     this.data, {
@@ -82,6 +90,7 @@ class CustomText extends StatelessWidget {
     this.color = AppColors.black,
     this.textAlign,
     this.overflow,
+    this.maxLines,
   });
   const CustomText.h9(
     this.data, {
@@ -91,6 +100,7 @@ class CustomText extends StatelessWidget {
     this.color = AppColors.black,
     this.textAlign,
     this.overflow,
+    this.maxLines,
   });
 
   @override
@@ -99,6 +109,7 @@ class CustomText extends StatelessWidget {
       data,
       textAlign: textAlign,
       overflow: overflow,
+      maxLines: maxLines,
       style: TextStyle(
         fontSize: fontSize,
         fontWeight: fontWeight,

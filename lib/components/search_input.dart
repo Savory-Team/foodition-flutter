@@ -6,22 +6,26 @@ class SearchInput extends StatelessWidget {
   final TextEditingController? controller;
   final Function(String value)? onChanged;
   final VoidCallback? onTap;
+  final bool autofocus;
 
   const SearchInput({
     super.key,
     this.controller,
     this.onChanged,
     this.onTap,
+    this.autofocus = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: 55.0,
       decoration: const BoxDecoration(
         color: AppColors.white,
         borderRadius: AppBorderRadius.radius12pt,
       ),
       child: TextFormField(
+        autofocus: autofocus,
         onTap: onTap,
         readOnly: onTap != null,
         controller: controller,
@@ -31,7 +35,6 @@ class SearchInput extends StatelessWidget {
             Icons.search,
             color: AppColors.hint,
           ),
-          contentPadding: PaddingAll.spacing16pt,
           border: OutlineInputBorder(
             borderRadius: AppBorderRadius.radius12pt,
             borderSide: BorderSide(color: AppColors.stroke),

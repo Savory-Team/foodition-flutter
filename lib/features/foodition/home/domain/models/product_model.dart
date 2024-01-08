@@ -1,4 +1,4 @@
-import '../../../../core/core.dart';
+import '../../../../../core/core.dart';
 import '../enums/enums.dart';
 import 'models.dart';
 
@@ -7,7 +7,6 @@ class ProductModel {
   final String imageUrl;
   final List<String> categories;
   final String address;
-  final String city;
   final double rate;
   final bool isFavourite;
   final int stock;
@@ -23,7 +22,6 @@ class ProductModel {
     required this.imageUrl,
     required this.categories,
     required this.address,
-    required this.city,
     required this.rate,
     required this.isFavourite,
     required this.stock,

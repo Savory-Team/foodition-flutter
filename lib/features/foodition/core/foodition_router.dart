@@ -1,12 +1,12 @@
 import 'package:go_router/go_router.dart';
 
-import '../presentation/pages/pages.dart';
+import '../home/presentation/pages/pages.dart';
 
 part 'enums/root_tab.dart';
 part 'models/path_parameter.dart';
 
-class HomeRouter {
-  const HomeRouter._();
+class FooditionRouter {
+  const FooditionRouter._();
 
   static final List<GoRoute> init = [
     GoRoute(
@@ -19,11 +19,21 @@ class HomeRouter {
           currentTab: tab,
         );
       },
-      routes: const [],
+      routes: [
+        GoRoute(
+          name: search,
+          path: searchPath,
+          builder: (context, state) => const SearchPage(),
+        ),
+      ],
     ),
   ];
 
   /// route for page [RootPage]
   static const String root = 'root';
   static const String rootPath = '/root';
+
+  /// route for page [SearchPage]
+  static const String search = 'search';
+  static const String searchPath = 'search';
 }
