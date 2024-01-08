@@ -31,9 +31,7 @@ class FooditionRouter {
           path: productDetailPath,
           builder: (context, state) {
             final args = state.extra as ProductModel;
-            return ProductDetailPage(
-              data: args,
-            );
+            return ProductDetailPage(data: args);
           },
           routes: [
             GoRoute(
@@ -42,6 +40,14 @@ class FooditionRouter {
               builder: (context, state) => const CheckoutSuccessPage(),
             ),
           ],
+        ),
+        GoRoute(
+          name: historyDetail,
+          path: historyDetailPath,
+          builder: (context, state) {
+            final args = state.extra as HistoryModel;
+            return HistoryDetailPage(data: args);
+          },
         ),
       ],
     ),
@@ -62,4 +68,8 @@ class FooditionRouter {
   /// route for page [CheckoutSuccessPage]
   static const String checkoutSuccess = 'checkoutSuccess';
   static const String checkoutSuccessPath = 'checkoutSuccess';
+
+  /// route for page [HistoryDetailPage]
+  static const String historyDetail = 'historyDetail';
+  static const String historyDetailPath = 'historyDetail';
 }

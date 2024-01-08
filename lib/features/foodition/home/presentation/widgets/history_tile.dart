@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../components/components.dart';
 import '../../../../../core/core.dart';
+import '../../../core/core.dart';
 import '../../domain/models/models.dart';
 
 class HistoryTile extends StatelessWidget {
@@ -14,7 +15,10 @@ class HistoryTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () => context.pushNamed(
+        FooditionRouter.historyDetail,
+        extra: data,
+      ),
       child: Container(
         padding: const EdgeInsets.symmetric(
             horizontal: AppDimens.spacing32pt, vertical: AppDimens.spacing16pt),
