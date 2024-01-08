@@ -16,7 +16,7 @@ class _RootPageState extends State<RootPage> {
   final List<Widget> _pages = [
     const HomePage(),
     const FavouritePage(),
-    const Center(child: Text('This Page')),
+    const ScanPage(),
     const Center(child: Text('This Page')),
     const Center(child: Text('This Page')),
   ];
