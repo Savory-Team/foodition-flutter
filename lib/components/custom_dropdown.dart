@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../core/constants/colors.dart';
-import 'spaces.dart';
+import '../core/constants/dimens.dart';
 
 class CustomDropdown extends StatelessWidget {
   final String? value;
@@ -19,39 +19,25 @@ class CustomDropdown extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w700,
-            color: AppColors.black,
-          ),
+    return DropdownButtonFormField<String>(
+      value: value,
+      onChanged: onChanged,
+      items: items.map((String item) {
+        return DropdownMenuItem<String>(
+          value: item,
+          child: Text(item),
+        );
+      }).toList(),
+      decoration: const InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: AppBorderRadius.radius12pt,
+          borderSide: BorderSide(color: AppColors.stroke),
         ),
-        const SpaceHeight(12.0),
-        DropdownButtonFormField<String>(
-          value: value,
-          onChanged: onChanged,
-          items: items.map((String item) {
-            return DropdownMenuItem<String>(
-              value: item,
-              child: Text(item),
-            );
-          }).toList(),
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
-              borderSide: BorderSide(color: AppColors.grey),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.all(Radius.circular(5.0)),
-              borderSide: BorderSide(color: AppColors.grey),
-            ),
-          ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: AppBorderRadius.radius12pt,
+          borderSide: BorderSide(color: AppColors.stroke),
         ),
-      ],
+      ),
     );
   }
 }

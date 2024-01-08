@@ -30,14 +30,14 @@ class CustomTextField extends StatelessWidget {
         obscureText: obscureText,
         keyboardType: keyboardType,
         decoration: InputDecoration(
-          prefixIcon: Icon(icon, color: AppColors.grey),
+          prefixIcon: icon == null ? null : Icon(icon, color: AppColors.grey),
           border: const OutlineInputBorder(
             borderRadius: AppBorderRadius.radius12pt,
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: BorderSide(color: AppColors.stroke),
           ),
           enabledBorder: const OutlineInputBorder(
             borderRadius: AppBorderRadius.radius12pt,
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: BorderSide(color: AppColors.stroke),
           ),
           hintText: label,
           hintStyle: const TextStyle(color: AppColors.hint),

@@ -64,6 +64,14 @@ class FooditionRouter {
             return EditProfilePage(data: args);
           },
         ),
+        GoRoute(
+          name: editAddress,
+          path: editAddressPath,
+          builder: (context, state) {
+            final args = state.extra as UserModel;
+            return EditAddressPage(data: args);
+          },
+        ),
       ],
     ),
   ];
@@ -95,4 +103,8 @@ class FooditionRouter {
   /// route for page [EditProfilePage]
   static const String editProfile = 'editProfile';
   static const String editProfilePath = 'editProfile';
+
+  /// route for page [EditAddressPage]
+  static const String editAddress = 'editAddress';
+  static const String editAddressPath = 'editAddress';
 }

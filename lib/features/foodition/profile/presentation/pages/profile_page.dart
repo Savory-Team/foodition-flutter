@@ -80,7 +80,14 @@ class ProfilePage extends StatelessWidget {
                   const CustomText.h4('Pengaturan Akun'),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    onTap: () {},
+                    onTap: () => context.pushNamed(
+                      FooditionRouter.editAddress,
+                      extra: UserModel(
+                        imageUrl:
+                            'https://cdnwpseller.gramedia.net/wp-content/uploads/2023/02/luffy.jpg',
+                        name: 'Fauzan Abdillah',
+                      ),
+                    ),
                     leading: Assets.icons.location.svg(),
                     title: const CustomText.h5('Alamat Saya'),
                     subtitle: const CustomText.h7('Atur alamat belanja saya'),
