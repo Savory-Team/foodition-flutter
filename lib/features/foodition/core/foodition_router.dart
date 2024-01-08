@@ -49,6 +49,11 @@ class FooditionRouter {
             return HistoryDetailPage(data: args);
           },
         ),
+        GoRoute(
+          name: notification,
+          path: notificationPath,
+          builder: (context, state) => const NotificationPage(),
+        ),
       ],
     ),
   ];
@@ -72,4 +77,8 @@ class FooditionRouter {
   /// route for page [HistoryDetailPage]
   static const String historyDetail = 'historyDetail';
   static const String historyDetailPath = 'historyDetail';
+
+  /// route for page [NotificationPage]
+  static const String notification = 'notification';
+  static const String notificationPath = 'notification';
 }

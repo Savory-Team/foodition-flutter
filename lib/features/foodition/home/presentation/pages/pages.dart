@@ -3,6 +3,7 @@ export 'favourite_page.dart';
 export 'history_detail_page.dart';
 export 'history_page.dart';
 export 'home_page.dart';
+export 'notification_page.dart';
 export 'product_detail_page.dart';
 export 'root_page.dart';
 export 'scan_page.dart';
