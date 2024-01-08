@@ -1,4 +1,5 @@
 export 'checkout_success_page.dart';
+export 'favourite_page.dart';
 export 'home_page.dart';
 export 'product_detail_page.dart';
 export 'root_page.dart';

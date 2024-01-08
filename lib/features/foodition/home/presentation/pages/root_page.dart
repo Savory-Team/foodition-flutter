@@ -15,7 +15,7 @@ class _RootPageState extends State<RootPage> {
   late int _selectedIndex;
   final List<Widget> _pages = [
     const HomePage(),
-    const Center(child: Text('This Page')),
+    const FavouritePage(),
     const Center(child: Text('This Page')),
     const Center(child: Text('This Page')),
     const Center(child: Text('This Page')),

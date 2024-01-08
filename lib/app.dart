@@ -23,7 +23,7 @@ class App extends StatelessWidget {
           elevation: 0,
           titleTextStyle: GoogleFonts.inter(
             color: AppColors.black,
-            fontSize: 16.0,
+            fontSize: AppDimens.spacing18pt,
             fontWeight: FontWeight.w600,
           ),
           iconTheme: const IconThemeData(
