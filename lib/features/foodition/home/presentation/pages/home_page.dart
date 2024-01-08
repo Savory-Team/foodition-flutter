@@ -80,11 +80,7 @@ class HomePage extends StatelessWidget {
                   IconButton(
                     onPressed: () =>
                         context.pushNamed(FooditionRouter.notification),
-                    icon: const Icon(
-                      Icons.notifications_outlined,
-                      size: 30.0,
-                      color: AppColors.black,
-                    ),
+                    icon: Assets.icons.notification.svg(width: 30.0),
                   ),
                 ],
               ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/core.dart';
+import '../../../profile/presentation/pages/pages.dart';
 import 'pages.dart';
 
 class RootPage extends StatefulWidget {
@@ -18,7 +19,7 @@ class _RootPageState extends State<RootPage> {
     const FavouritePage(),
     const ScanPage(),
     const HistoryPage(),
-    const Center(child: Text('This Page')),
+    const ProfilePage(),
   ];
 
   @override

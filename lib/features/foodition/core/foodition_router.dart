@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 
 import '../home/domain/models/models.dart';
 import '../home/presentation/pages/pages.dart';
+import '../profile/presentation/pages/pages.dart';
 
 part 'enums/root_tab.dart';
 part 'models/path_parameter.dart';
@@ -81,4 +82,8 @@ class FooditionRouter {
   /// route for page [NotificationPage]
   static const String notification = 'notification';
   static const String notificationPath = 'notification';
+
+  /// route for page [EditProfilePage]
+  static const String editProfile = 'editProfile';
+  static const String editProfilePath = 'editProfile';
 }
