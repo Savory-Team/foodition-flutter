@@ -117,6 +117,7 @@ class HistoryDetailPage extends StatelessWidget {
                 ),
               ),
               label: 'Batalkan Pesanan',
+              color: AppColors.red,
             )
           else if (data.status.isDone)
             Button.filled(
