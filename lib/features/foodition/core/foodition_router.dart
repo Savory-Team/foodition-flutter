@@ -59,6 +59,43 @@ class FooditionRouter {
           name: editProfile,
           path: editProfilePath,
           builder: (context, state) => const EditProfilePage(),
+          routes: [
+            GoRoute(
+              name: editBio,
+              path: editBioPath,
+              builder: (context, state) => const EditBioPage(),
+            ),
+            GoRoute(
+              name: editBirthdate,
+              path: editBirthdatePath,
+              builder: (context, state) => const EditBirthdatePage(),
+            ),
+            GoRoute(
+              name: editEmail,
+              path: editEmailPath,
+              builder: (context, state) => const EditEmailPage(),
+            ),
+            GoRoute(
+              name: editGender,
+              path: editGenderPath,
+              builder: (context, state) => const EditGenderPage(),
+            ),
+            GoRoute(
+              name: editName,
+              path: editNamePath,
+              builder: (context, state) => const EditNamePage(),
+            ),
+            GoRoute(
+              name: editPhoneNumber,
+              path: editPhoneNumberPath,
+              builder: (context, state) => const EditPhoneNumberPage(),
+            ),
+            GoRoute(
+              name: editUsername,
+              path: editUsernamePath,
+              builder: (context, state) => const EditUsernamePage(),
+            ),
+          ],
         ),
         GoRoute(
           name: editAddress,
@@ -109,4 +146,32 @@ class FooditionRouter {
   /// route for page [EditPasswordPage]
   static const String editPassword = 'editPassword';
   static const String editPasswordPath = 'editPassword';
+
+  /// route for page [EditBioPage]
+  static const String editBio = 'editBio';
+  static const String editBioPath = 'editBio';
+
+  /// route for page [EditBirthdatePage]
+  static const String editBirthdate = 'editBirthdate';
+  static const String editBirthdatePath = 'editBirthdate';
+
+  /// route for page [EditEmailPage]
+  static const String editEmail = 'editEmail';
+  static const String editEmailPath = 'editEmail';
+
+  /// route for page [EditGenderPage]
+  static const String editGender = 'editGender';
+  static const String editGenderPath = 'editGender';
+
+  /// route for page [EditNamePage]
+  static const String editName = 'editName';
+  static const String editNamePath = 'editName';
+
+  /// route for page [EditPhoneNumberPage]
+  static const String editPhoneNumber = 'editPhoneNumber';
+  static const String editPhoneNumberPath = 'editPhoneNumber';
+
+  /// route for page [EditUsernamePage]
+  static const String editUsername = 'editUsername';
+  static const String editUsernamePath = 'editUsername';
 }

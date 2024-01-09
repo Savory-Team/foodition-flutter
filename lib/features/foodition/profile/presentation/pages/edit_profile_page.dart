@@ -1,10 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../components/components.dart';
 import '../../../../../core/assets/assets.dart';
 import '../../../../../core/constants/constants.dart';
+import '../../../core/core.dart';
 
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({super.key});
@@ -52,7 +54,7 @@ class EditProfilePage extends StatelessWidget {
                   const CustomText.h4('Info Profile'),
                   const SpaceHeight(AppDimens.spacing20pt),
                   InkWell(
-                    onTap: () {},
+                    onTap: () => context.pushNamed(FooditionRouter.editName),
                     child: const Row(
                       children: [
                         Expanded(flex: 1, child: CustomText.h6('Nama')),
@@ -66,7 +68,8 @@ class EditProfilePage extends StatelessWidget {
                   ),
                   const SpaceHeight(AppDimens.spacing16pt),
                   InkWell(
-                    onTap: () {},
+                    onTap: () =>
+                        context.pushNamed(FooditionRouter.editUsername),
                     child: const Row(
                       children: [
                         Expanded(flex: 1, child: CustomText.h6('Username')),
@@ -79,7 +82,7 @@ class EditProfilePage extends StatelessWidget {
                   ),
                   const SpaceHeight(AppDimens.spacing16pt),
                   InkWell(
-                    onTap: () {},
+                    onTap: () => context.pushNamed(FooditionRouter.editBio),
                     child: const Row(
                       children: [
                         Expanded(flex: 1, child: CustomText.h6('Bio')),
@@ -101,36 +104,32 @@ class EditProfilePage extends StatelessWidget {
                 children: [
                   const CustomText.h4('Info Pribadi'),
                   const SpaceHeight(AppDimens.spacing20pt),
-                  InkWell(
-                    onTap: () {},
-                    child: Row(
-                      children: [
-                        const Expanded(
-                            flex: 1, child: CustomText.h6('User ID')),
-                        const Expanded(
-                            flex: 2,
-                            child: CustomText.h6('12345678',
-                                fontWeight: FontWeight.bold)),
-                        InkWell(
-                          onTap: () {
-                            Clipboard.setData(
-                                const ClipboardData(text: '12345678'));
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                content: CustomText.h6('User ID telah disalin'),
-                                backgroundColor: AppColors.white,
-                                duration: Duration(seconds: 2),
-                              ),
-                            );
-                          },
-                          child: Assets.icons.copy.svg(width: 20.0),
-                        ),
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      const Expanded(flex: 1, child: CustomText.h6('User ID')),
+                      const Expanded(
+                          flex: 2,
+                          child: CustomText.h6('12345678',
+                              fontWeight: FontWeight.bold)),
+                      InkWell(
+                        onTap: () {
+                          Clipboard.setData(
+                              const ClipboardData(text: '12345678'));
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: CustomText.h6('User ID telah disalin'),
+                              backgroundColor: AppColors.white,
+                              duration: Duration(seconds: 2),
+                            ),
+                          );
+                        },
+                        child: Assets.icons.copy.svg(width: 20.0),
+                      ),
+                    ],
                   ),
                   const SpaceHeight(AppDimens.spacing16pt),
                   InkWell(
-                    onTap: () {},
+                    onTap: () => context.pushNamed(FooditionRouter.editEmail),
                     child: const Row(
                       children: [
                         Expanded(flex: 1, child: CustomText.h6('E-mail')),
@@ -144,7 +143,8 @@ class EditProfilePage extends StatelessWidget {
                   ),
                   const SpaceHeight(AppDimens.spacing16pt),
                   InkWell(
-                    onTap: () {},
+                    onTap: () =>
+                        context.pushNamed(FooditionRouter.editPhoneNumber),
                     child: const Row(
                       children: [
                         Expanded(flex: 1, child: CustomText.h6('Nomor HP')),
@@ -155,7 +155,7 @@ class EditProfilePage extends StatelessWidget {
                   ),
                   const SpaceHeight(AppDimens.spacing16pt),
                   InkWell(
-                    onTap: () {},
+                    onTap: () => context.pushNamed(FooditionRouter.editGender),
                     child: const Row(
                       children: [
                         Expanded(
@@ -167,7 +167,8 @@ class EditProfilePage extends StatelessWidget {
                   ),
                   const SpaceHeight(AppDimens.spacing16pt),
                   InkWell(
-                    onTap: () {},
+                    onTap: () =>
+                        context.pushNamed(FooditionRouter.editBirthdate),
                     child: const Row(
                       children: [
                         Expanded(

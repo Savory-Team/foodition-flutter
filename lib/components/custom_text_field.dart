@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final TextInputType? keyboardType;
   final IconData? icon;
+  final Widget? prefix;
 
   const CustomTextField({
     super.key,
@@ -18,6 +19,7 @@ class CustomTextField extends StatelessWidget {
     this.obscureText = false,
     this.keyboardType,
     this.icon,
+    this.prefix,
   });
 
   @override
@@ -31,6 +33,7 @@ class CustomTextField extends StatelessWidget {
         keyboardType: keyboardType,
         decoration: InputDecoration(
           prefixIcon: icon == null ? null : Icon(icon, color: AppColors.grey),
+          prefix: prefix,
           border: const OutlineInputBorder(
             borderRadius: AppBorderRadius.radius12pt,
             borderSide: BorderSide(color: AppColors.stroke),
