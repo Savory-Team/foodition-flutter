@@ -33,7 +33,8 @@ class ProfilePage extends StatelessWidget {
                     const Center(child: CircularProgressIndicator()),
               ),
             ),
-            title: const CustomText.h5('Fauzan Abdillah'),
+            title: const CustomText.h5('Fauzan Abdillah',
+                fontWeight: FontWeight.w600),
             subtitle: const CustomText.h5('examle@email.com'),
             trailing: IconButton(
               onPressed: () => context.pushNamed(FooditionRouter.editProfile),
@@ -56,7 +57,7 @@ class ProfilePage extends StatelessWidget {
           const SpaceHeight(AppDimens.spacing12pt),
           ListTile(
             tileColor: AppColors.white,
-            onTap: () {},
+            onTap: () => context.pushNamed(FooditionRouter.myStore),
             leading: Assets.icons.myShop.svg(),
             title: const CustomText.h4('Restoran Saya'),
             trailing: const Icon(Icons.chevron_right),

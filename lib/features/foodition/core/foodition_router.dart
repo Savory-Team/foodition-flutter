@@ -107,6 +107,11 @@ class FooditionRouter {
           path: editPasswordPath,
           builder: (context, state) => const EditPasswordPage(),
         ),
+        GoRoute(
+          name: myStore,
+          path: myStorePath,
+          builder: (context, state) => const MyStorePage(),
+        ),
       ],
     ),
   ];
@@ -174,4 +179,8 @@ class FooditionRouter {
   /// route for page [EditUsernamePage]
   static const String editUsername = 'editUsername';
   static const String editUsernamePath = 'editUsername';
+
+  /// route for page [MyStorePage]
+  static const String myStore = 'myStore';
+  static const String myStorePath = 'myStore';
 }
