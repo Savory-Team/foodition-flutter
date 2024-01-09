@@ -12,6 +12,7 @@ class EditAddressPage extends StatefulWidget {
 }
 
 class _EditAddressPageState extends State<EditAddressPage> {
+  late final TextEditingController labelAddressController;
   late final TextEditingController countryController;
   late final TextEditingController provinceController;
   late final TextEditingController cityController;
@@ -21,6 +22,7 @@ class _EditAddressPageState extends State<EditAddressPage> {
 
   @override
   void initState() {
+    labelAddressController = TextEditingController(text: 'Rumah');
     countryController = TextEditingController(text: 'Indonesia');
     provinceController = TextEditingController(text: 'Jawa Timur');
     cityController = TextEditingController(text: 'Jember');
@@ -34,6 +36,7 @@ class _EditAddressPageState extends State<EditAddressPage> {
 
   @override
   void dispose() {
+    labelAddressController.dispose();
     countryController.dispose();
     provinceController.dispose();
     cityController.dispose();
@@ -52,6 +55,13 @@ class _EditAddressPageState extends State<EditAddressPage> {
       body: ListView(
         padding: PaddingAll.spacing20pt,
         children: [
+          const CustomText.h4('Label Alamat'),
+          const SpaceHeight(AppDimens.spacing8pt),
+          CustomTextField(
+            controller: labelAddressController,
+            label: 'Label Alamat',
+            onChanged: (value) {},
+          ),
           const CustomText.h4('Negara'),
           const SpaceHeight(AppDimens.spacing8pt),
           CustomTextField(

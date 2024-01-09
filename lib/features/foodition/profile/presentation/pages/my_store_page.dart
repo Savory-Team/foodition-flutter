@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../components/components.dart';
 import '../../../../../core/assets/assets.dart';
 import '../../../../../core/constants/constants.dart';
+import '../../../core/core.dart';
 
 class MyStorePage extends StatelessWidget {
   const MyStorePage({super.key});
@@ -103,7 +105,7 @@ class MyStorePage extends StatelessWidget {
                   ),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    onTap: () {},
+                    onTap: () => context.pushNamed(FooditionRouter.editAddress),
                     leading: Assets.icons.location.svg(),
                     title: const CustomText.h5('Alamat Restoran'),
                     subtitle: const CustomText.h7('Atur alamat restoranmu'),
