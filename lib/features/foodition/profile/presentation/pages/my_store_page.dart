@@ -96,7 +96,8 @@ class MyStorePage extends StatelessWidget {
                   const CustomText.h4('Pengaturan Restoran'),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    onTap: () {},
+                    onTap: () =>
+                        context.pushNamed(FooditionRouter.editRestaurant),
                     leading:
                         Assets.icons.edit.svg(width: AppDimens.spacing24pt),
                     title: const CustomText.h5('Edit Informasi Restoran'),

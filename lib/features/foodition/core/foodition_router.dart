@@ -112,6 +112,11 @@ class FooditionRouter {
           path: myStorePath,
           builder: (context, state) => const MyStorePage(),
         ),
+        GoRoute(
+          name: editRestaurant,
+          path: editRestaurantPath,
+          builder: (context, state) => const EditRestaurantPage(),
+        ),
       ],
     ),
   ];
@@ -183,4 +188,8 @@ class FooditionRouter {
   /// route for page [MyStorePage]
   static const String myStore = 'myStore';
   static const String myStorePath = 'myStore';
+
+  /// route for page [EditRestaurantPage]
+  static const String editRestaurant = 'editRestaurant';
+  static const String editRestaurantPath = 'editRestaurant';
 }
