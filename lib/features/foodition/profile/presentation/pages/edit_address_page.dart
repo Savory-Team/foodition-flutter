@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../../components/buttons.dart';
 import '../../../../../components/components.dart';
 import '../../../../../core/constants/constants.dart';
-import '../../../../auth/auth.dart';
 
 class EditAddressPage extends StatefulWidget {
-  final UserModel data;
-  const EditAddressPage({super.key, required this.data});
+  const EditAddressPage({super.key});
 
   @override
   State<EditAddressPage> createState() => _EditAddressPageState();
@@ -114,7 +111,6 @@ class _EditAddressPageState extends State<EditAddressPage> {
             label: 'Alamat Lengkap',
             onChanged: (value) {},
           ),
-          const SpaceHeight(AppDimens.spacing24pt),
         ],
       ),
       bottomNavigationBar: Padding(

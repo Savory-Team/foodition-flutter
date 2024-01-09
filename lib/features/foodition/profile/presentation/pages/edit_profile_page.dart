@@ -5,11 +5,9 @@ import 'package:flutter/services.dart';
 import '../../../../../components/components.dart';
 import '../../../../../core/assets/assets.dart';
 import '../../../../../core/constants/constants.dart';
-import '../../../../auth/domain/models/models.dart';
 
 class EditProfilePage extends StatelessWidget {
-  final UserModel data;
-  const EditProfilePage({super.key, required this.data});
+  const EditProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,8 @@ class EditProfilePage extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(50.0)),
                 child: CachedNetworkImage(
-                  imageUrl: data.imageUrl,
+                  imageUrl:
+                      'https://cdnwpseller.gramedia.net/wp-content/uploads/2023/02/luffy.jpg',
                   width: 64.0,
                   height: 64.0,
                   fit: BoxFit.cover,
@@ -54,14 +53,14 @@ class EditProfilePage extends StatelessWidget {
                   const SpaceHeight(AppDimens.spacing20pt),
                   InkWell(
                     onTap: () {},
-                    child: Row(
+                    child: const Row(
                       children: [
-                        const Expanded(flex: 1, child: CustomText.h6('Nama')),
+                        Expanded(flex: 1, child: CustomText.h6('Nama')),
                         Expanded(
                             flex: 2,
-                            child: CustomText.h6(data.name,
+                            child: CustomText.h6('Fauzan Abdillah',
                                 fontWeight: FontWeight.bold)),
-                        const Icon(Icons.chevron_right),
+                        Icon(Icons.chevron_right),
                       ],
                     ),
                   ),

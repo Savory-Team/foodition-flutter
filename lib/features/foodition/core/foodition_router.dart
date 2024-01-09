@@ -1,6 +1,5 @@
 import 'package:go_router/go_router.dart';
 
-import '../../auth/domain/models/models.dart';
 import '../home/domain/models/models.dart';
 import '../home/presentation/pages/pages.dart';
 import '../profile/presentation/pages/pages.dart';
@@ -59,18 +58,17 @@ class FooditionRouter {
         GoRoute(
           name: editProfile,
           path: editProfilePath,
-          builder: (context, state) {
-            final args = state.extra as UserModel;
-            return EditProfilePage(data: args);
-          },
+          builder: (context, state) => const EditProfilePage(),
         ),
         GoRoute(
           name: editAddress,
           path: editAddressPath,
-          builder: (context, state) {
-            final args = state.extra as UserModel;
-            return EditAddressPage(data: args);
-          },
+          builder: (context, state) => const EditAddressPage(),
+        ),
+        GoRoute(
+          name: editPassword,
+          path: editPasswordPath,
+          builder: (context, state) => const EditPasswordPage(),
         ),
       ],
     ),
@@ -107,4 +105,8 @@ class FooditionRouter {
   /// route for page [EditAddressPage]
   static const String editAddress = 'editAddress';
   static const String editAddressPath = 'editAddress';
+
+  /// route for page [EditPasswordPage]
+  static const String editPassword = 'editPassword';
+  static const String editPasswordPath = 'editPassword';
 }

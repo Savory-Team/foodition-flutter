@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import '../../../../../components/components.dart';
 import '../../../../../core/assets/assets.dart';
 import '../../../../../core/constants/constants.dart';
-import '../../../../auth/auth.dart';
 import '../../../core/core.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -37,14 +36,7 @@ class ProfilePage extends StatelessWidget {
             title: const CustomText.h5('Fauzan Abdillah'),
             subtitle: const CustomText.h5('examle@email.com'),
             trailing: IconButton(
-              onPressed: () => context.pushNamed(
-                FooditionRouter.editProfile,
-                extra: UserModel(
-                  imageUrl:
-                      'https://cdnwpseller.gramedia.net/wp-content/uploads/2023/02/luffy.jpg',
-                  name: 'Fauzan Abdillah',
-                ),
-              ),
+              onPressed: () => context.pushNamed(FooditionRouter.editProfile),
               icon: Padding(
                 padding: PaddingAll.spacing4pt,
                 child: Assets.icons.edit.svg(),
@@ -80,14 +72,7 @@ class ProfilePage extends StatelessWidget {
                   const CustomText.h4('Pengaturan Akun'),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    onTap: () => context.pushNamed(
-                      FooditionRouter.editAddress,
-                      extra: UserModel(
-                        imageUrl:
-                            'https://cdnwpseller.gramedia.net/wp-content/uploads/2023/02/luffy.jpg',
-                        name: 'Fauzan Abdillah',
-                      ),
-                    ),
+                    onTap: () => context.pushNamed(FooditionRouter.editAddress),
                     leading: Assets.icons.location.svg(),
                     title: const CustomText.h5('Alamat Saya'),
                     subtitle: const CustomText.h7('Atur alamat belanja saya'),
@@ -103,7 +88,8 @@ class ProfilePage extends StatelessWidget {
                   ),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    onTap: () {},
+                    onTap: () =>
+                        context.pushNamed(FooditionRouter.editPassword),
                     leading: Assets.icons.lock.svg(),
                     title: const CustomText.h5('Reset Password'),
                     subtitle: const CustomText.h7('Atur ulang kata sandi'),
