@@ -69,9 +69,9 @@ class MyStorePage extends StatelessWidget {
                 children: [
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    onTap: () {},
+                    onTap: () => context.pushNamed(FooditionRouter.menuList),
                     title: const CustomText.h4('Daftar Menu'),
-                    subtitle: const CustomText.h6('1 Menu'),
+                    subtitle: const CustomText.h6('4 Menu'),
                     trailing: const Icon(Icons.chevron_right),
                   ),
                   ListTile(
@@ -113,7 +113,8 @@ class MyStorePage extends StatelessWidget {
                   ),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    onTap: () {},
+                    onTap: () => context
+                        .pushNamed(FooditionRouter.notificationRestaurant),
                     leading: Assets.icons.notification.svg(),
                     title: const CustomText.h5('Notifikasi'),
                     subtitle: const CustomText.h7(

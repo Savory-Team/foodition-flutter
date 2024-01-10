@@ -9,5 +9,7 @@ export 'edit_phone_number_page.dart';
 export 'edit_profile_page.dart';
 export 'edit_restaurant_page.dart';
 export 'edit_username_page.dart';
+export 'menu_list_page.dart';
 export 'my_store_page.dart';
+export 'notification_restaurant_page.dart';
 export 'profile_page.dart';

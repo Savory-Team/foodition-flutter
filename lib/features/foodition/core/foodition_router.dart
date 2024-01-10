@@ -111,11 +111,23 @@ class FooditionRouter {
           name: myStore,
           path: myStorePath,
           builder: (context, state) => const MyStorePage(),
-        ),
-        GoRoute(
-          name: editRestaurant,
-          path: editRestaurantPath,
-          builder: (context, state) => const EditRestaurantPage(),
+          routes: [
+            GoRoute(
+              name: menuList,
+              path: menuListPath,
+              builder: (context, state) => const MenuListPage(),
+            ),
+            GoRoute(
+              name: editRestaurant,
+              path: editRestaurantPath,
+              builder: (context, state) => const EditRestaurantPage(),
+            ),
+            GoRoute(
+              name: notificationRestaurant,
+              path: notificationRestaurantPath,
+              builder: (context, state) => const NotificationRestaurantPage(),
+            ),
+          ],
         ),
       ],
     ),
@@ -189,7 +201,15 @@ class FooditionRouter {
   static const String myStore = 'myStore';
   static const String myStorePath = 'myStore';
 
+  /// route for page [MenuListPage]
+  static const String menuList = 'menuList';
+  static const String menuListPath = 'menuList';
+
   /// route for page [EditRestaurantPage]
   static const String editRestaurant = 'editRestaurant';
   static const String editRestaurantPath = 'editRestaurant';
+
+  /// route for page [NotificationRestaurantPage]
+  static const String notificationRestaurant = 'notificationRestaurant';
+  static const String notificationRestaurantPath = 'notificationRestaurant';
 }
