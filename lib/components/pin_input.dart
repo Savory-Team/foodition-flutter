@@ -48,6 +48,7 @@ class _PinInputState extends State<PinInput> {
             keyboardType: TextInputType.number,
             maxLength: 1,
             textAlign: TextAlign.center,
+            autofocus: index == 0,
             decoration: const InputDecoration(
               counterText: '',
               border: OutlineInputBorder(
