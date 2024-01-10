@@ -47,6 +47,7 @@ class _EditRestaurantPageState extends State<EditRestaurantPage> {
       ),
       body: ListView(
         children: [
+          const SpaceHeight(AppDimens.spacing24pt),
           Center(
             child: ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(50.0)),

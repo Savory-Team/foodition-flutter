@@ -122,6 +122,11 @@ class FooditionRouter {
                   path: menuCheckPath,
                   builder: (context, state) => const MenuCheckPage(),
                 ),
+                GoRoute(
+                  name: addMenu,
+                  path: addMenuPath,
+                  builder: (context, state) => const AddMenuPage(),
+                ),
               ],
             ),
             GoRoute(
@@ -215,6 +220,10 @@ class FooditionRouter {
   /// route for page [MenuCheckPage]
   static const String menuCheck = 'menuCheck';
   static const String menuCheckPath = 'menuCheck';
+
+  /// route for page [AddMenuPage]
+  static const String addMenu = 'addMenu';
+  static const String addMenuPath = 'addMenu';
 
   /// route for page [EditRestaurantPage]
   static const String editRestaurant = 'editRestaurant';

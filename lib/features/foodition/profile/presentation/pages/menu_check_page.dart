@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 
 import '../../../../../components/components.dart';
 import '../../../../../core/core.dart';
+import '../../../core/core.dart';
 import '../../../home/domain/enums/prediction_status.dart';
 import '../../../home/domain/models/prediction_result.dart';
 
@@ -95,7 +96,8 @@ class _MenuCheckPageState extends State<MenuCheckPage> {
                       TextButton(
                         onPressed: () {
                           if (result.status.isProper) {
-                            /// TODO: push to ----
+                            context
+                                .pushReplacementNamed(FooditionRouter.addMenu);
                           } else {
                             context.pop();
                           }

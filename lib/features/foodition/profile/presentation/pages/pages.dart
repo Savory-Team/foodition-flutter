@@ -1,3 +1,4 @@
+export 'add_menu_page.dart';
 export 'edit_address_page.dart';
 export 'edit_bio_page.dart';
 export 'edit_birthdate_page.dart';
