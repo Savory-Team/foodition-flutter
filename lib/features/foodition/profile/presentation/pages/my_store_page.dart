@@ -76,7 +76,8 @@ class MyStorePage extends StatelessWidget {
                   ),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    onTap: () {},
+                    onTap: () =>
+                        context.pushNamed(FooditionRouter.salesHistory),
                     title: const CustomText.h4('Penjualan Makanan'),
                     subtitle: const CustomText.h6('Penjualan sebagai seller'),
                     trailing: const Icon(Icons.chevron_right),

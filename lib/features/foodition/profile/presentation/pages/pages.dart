@@ -15,3 +15,4 @@ export 'menu_list_page.dart';
 export 'my_store_page.dart';
 export 'notification_restaurant_page.dart';
 export 'profile_page.dart';
+export 'sales_history_page.dart';
