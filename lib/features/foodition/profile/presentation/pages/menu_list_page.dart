@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../components/components.dart';
 import '../../../../../core/constants/constants.dart';
+import '../../../core/core.dart';
 import '../../domain/models/menu_model.dart';
 import '../widgets/widgets.dart';
 
@@ -62,7 +64,7 @@ class MenuListPage extends StatelessWidget {
         title: const Text('Daftar Menu'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () => context.pushNamed(FooditionRouter.menuCheck),
             icon: const Icon(Icons.add),
           ),
         ],

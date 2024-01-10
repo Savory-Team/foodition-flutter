@@ -13,7 +13,7 @@ class SplashPage extends StatelessWidget {
     Future.delayed(
       const Duration(seconds: 1),
       // FIXME: change to IntroductionRouter.introduction
-      () => context.goNamed(FooditionRouter.root),
+      () => context.goNamed(FooditionRouter.myStore),
     );
 
     return Scaffold(

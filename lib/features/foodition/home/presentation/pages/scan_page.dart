@@ -19,6 +19,7 @@ class _ScanPageState extends State<ScanPage> {
   final imagePicker = ImagePicker();
   XFile? xFile;
   final result = PredictionResult(
+    status: PredictionStatus.inappropriate,
     result: 'Makanan ini Layak',
     explanation:
         'Lorem ipsum dolor sit amet consectetur. Aliquet tellus duis quam cursus sollicitudin non diam aliquam ipsum. Tellus arcu scelerisque nibh ut posuere odio mauris.',
@@ -89,8 +90,22 @@ class _ScanPageState extends State<ScanPage> {
                         shape: const RoundedRectangleBorder(
                           borderRadius: AppBorderRadius.radius8pt,
                         ),
-                        title: CustomText.h3(result.result),
-                        content: CustomText.h6(result.explanation),
+                        title: result.status.isProper
+                            ? CustomText.h3(result.result)
+                            : null,
+                        content: result.status.isProper
+                            ? CustomText.h6(result.explanation)
+                            : Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Assets.images.failed.image(width: 150.0),
+                                  const SpaceHeight(AppDimens.spacing24pt),
+                                  const CustomText.h3(
+                                    'Maaf\nMakanan ini sudah tidak layak untuk dimakan',
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ],
+                              ),
                         actions: [
                           TextButton(
                             onPressed: () {
