@@ -15,6 +15,13 @@ class AuthRouter {
           name: register,
           path: registerPath,
           builder: (context, state) => const RegisterPage(),
+          routes: [
+            GoRoute(
+              name: verification,
+              path: verificationPath,
+              builder: (context, state) => const VerificationPage(),
+            ),
+          ],
         ),
       ],
     ),
@@ -27,4 +34,8 @@ class AuthRouter {
   /// route for page [RegisterPage]
   static const String register = 'register';
   static const String registerPath = 'register';
+
+  /// route for page [VerificationPage]
+  static const String verification = 'verification';
+  static const String verificationPath = 'verification';
 }

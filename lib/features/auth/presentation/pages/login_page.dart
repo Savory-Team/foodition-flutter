@@ -42,19 +42,19 @@ class LoginPage extends StatelessWidget {
             obscureText: true,
             icon: Icons.lock,
           ),
-          const SpaceHeight(AppDimens.spacing8pt),
-          Align(
-            alignment: Alignment.centerRight,
-            child: InkWell(
-              onTap: () {
-                context.goNamed(FooditionRouter.root);
-              },
-              child: const CustomText.h6('Forgot Password?'),
-            ),
-          ),
+          // const SpaceHeight(AppDimens.spacing8pt),
+          // Align(
+          //   alignment: Alignment.centerRight,
+          //   child: InkWell(
+          //     onTap: () {},
+          //     child: const CustomText.h6('Forgot Password?'),
+          //   ),
+          // ),
           const SpaceHeight(AppDimens.spacing20pt),
           Button.filled(
-            onPressed: () {},
+            onPressed: () {
+              context.goNamed(FooditionRouter.root);
+            },
             label: 'Login',
           ),
           const SpaceHeight(AppDimens.spacing16pt),

@@ -57,7 +57,9 @@ class RegisterPage extends StatelessWidget {
           ),
           const SpaceHeight(AppDimens.spacing20pt),
           Button.filled(
-            onPressed: () {},
+            onPressed: () {
+              context.goNamed(AuthRouter.verification);
+            },
             label: 'Register',
           ),
           const SpaceHeight(AppDimens.spacing16pt),
