@@ -16,7 +16,7 @@ Link Application Prototype : https://drive.google.com/file/d/1aOYEUkoTKSYxllZ0vL
 
 # Mobile Application
 <div style="display: flex; justify-content: space-between;">
-	<img src="https://github.com/Savory-Team/.github/blob/main/profile/Splash%20Screen-1.png" alt="Cloud Arsitektur" style="width:24%;">
+	<img src="https://github.com/Savory-Team/.github/blob/main/profile/Splash%20Screen-1.png" alt="Cloud Arsitektur" style="width:24%; margin: auto 0;">
 	<img src="https://github.com/Savory-Team/.github/blob/main/profile/Detail%20Makanan-1.png" alt="Cloud Arsitektur" style="width:24%;">
 	<img src="https://github.com/Savory-Team/.github/blob/main/profile/Scan-1.png" alt="Cloud Arsitektur" style="width:24%;">
 	<img src="https://github.com/Savory-Team/.github/blob/main/profile/Restoran%20Saya-1.png" alt="Cloud Arsitektur" style="width:24%;">
