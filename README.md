@@ -10,11 +10,25 @@ Hi everyone! Savory Hipster
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Some resources to help you get started with this project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Link Application Prototype : https://drive.google.com/file/d/1aOYEUkoTKSYxllZ0vLo1umMGpOXA4Rgh/view?usp=sharing
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# Mobile Application
+<div>
+	<div align="center" style="display: flex; justify-content: space-between">
+	<img src="https://github.com/Savory-Team/.github/blob/main/profile/Splash%20Screen-1.png" alt="Cloud Arsitektur" style="width:24.5%;">
+	<img src="https://github.com/Savory-Team/.github/blob/main/profile/Detail%20Makanan-1.png" alt="Cloud Arsitektur" style="width:24.5%;">
+	<img src="https://github.com/Savory-Team/.github/blob/main/profile/Scan-1.png" alt="Cloud Arsitektur" style="width:24.5%;">
+	<img src="https://github.com/Savory-Team/.github/blob/main/profile/Restoran%20Saya-1.png" alt="Cloud Arsitektur" style="width:24.5%;">
+</div>
+
+# Technology we to use in Mobile Application
+- Git/GitHub: A version control system used to track changes in source code during software development. And Hosting platform for software projects that use Git for version control.
+- Visual Studio Code: A lightweight and powerful source code editor that supports many programming languages ​​and provides a broad ecosystem of extensions.
+- Postman: An API development tool that makes testing, documentation, and collaboration on APIs easy.
+- Flutter Framework: An open-source UI development framework, developed by Google, for creating mobile applications with rich and responsive user interfaces using the Dart programming language.
+- State Management - BLoC (Business Logic Component): A state management method for Flutter that separates business logic from the user interface. BLoC helps in managing application state efficiently.
+- HTTP Client - Retrofit: A library for Flutter (and also Android) that simplifies the use of REST APIs. Retrofit makes it easy to create a robust and clean HTTP client by providing a high level of abstraction.
+- Build Runner: A tool in Flutter/Dart that performs code generation tasks and annotation-based processing, supporting optimizations such as Assets Generator, Retrofit Generator, and integration with freezed for consistent and safe code
+- Clean Architecture: A method of organizing source code that divides an application into layers (datasource, domain, presentation) to separate responsibilities and improve code readability and modularity.
