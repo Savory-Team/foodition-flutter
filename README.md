@@ -1,6 +1,10 @@
-# foodition
+# Introduction 👋
 
-A new Flutter project.
+Hi everyone! Savory Hipster
+
+| Nama | Email | Role | University | LinkedIn |
+| ---      | ---       | ---       | ---       | ---       |
+| Fauzan Abdillah | fauzan.abdillah2705@gmail.com | Hipster | Politeknik Negeri Jember | [![text](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/fauzan2720/) |
 
 ## Getting Started
 
