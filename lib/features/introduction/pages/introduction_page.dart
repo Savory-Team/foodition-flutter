@@ -14,24 +14,24 @@ class IntroductionPage extends StatefulWidget {
 
 class _IntroductionPageState extends State<IntroductionPage> {
   int currentIndex = 0;
-  AssetGenImage image = Assets.images.rectangle;
+  AssetGenImage image = Assets.images.introduction.first;
   String text =
-      'Selamat datang di Foodition, tempatnya makanan hemat dan istimewa untuk setiap selera!';
+      'Foodition - Tidak hanya soal makanan, tapi juga tentang meminimalkan pemborosan. Mari bersama-sama menjadi bagian dari solusi untuk mengurangi limbah makanan.';
   String buttonTitle = 'Next';
 
   void nextTap(int index) {
     if (index == 0) {
       currentIndex++;
-      image = Assets.images.rectangle;
+      image = Assets.images.introduction.second;
       text =
-          'Jelajahi kelezatan tanpa merusak anggaran Anda - Foodition, solusi hemat untuk lidah Anda!';
+          'Wadah bagi kebaikan Anda. Satu langkah, satu donasi makanan, dapat membawa perubahan besar untuk masyarakat';
       buttonTitle = 'Next';
       setState(() {});
     } else if (index == 1) {
       currentIndex++;
-      image = Assets.images.rectangle;
+      image = Assets.images.introduction.third;
       text =
-          'Nikmati kelezatan istimewa tanpa menguras dompet Anda, hanya di Foodition!';
+          'Disetiap suap makanan memiliki makna. Mari bersama-sama memberikan kesempatan kepada mereka yang membutuhkan.';
       buttonTitle = 'Next';
       buttonTitle = 'Let\'s Start';
       setState(() {});
@@ -49,7 +49,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
           image.image(
               width: context.deviceWidth,
               height: context.deviceHeight / 1.25,
-              fit: BoxFit.fill),
+              fit: BoxFit.cover),
           Align(
             alignment: Alignment.bottomCenter,
             child: CustomBottomSheet(
@@ -89,7 +89,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
                       const SpaceHeight(AppDimens.spacing8pt),
                     ],
                   ),
-                  const SpaceHeight(AppDimens.spacing48pt),
+                  const SpaceHeight(AppDimens.spacing24pt),
                   Button.filled(
                     onPressed: () => nextTap(currentIndex),
                     label: buttonTitle,
