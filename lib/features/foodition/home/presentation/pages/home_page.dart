@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../components/components.dart';
 import '../../../../../core/core.dart';
+import '../../../../auth/presentation/managers/auth/auth_bloc.dart';
 import '../../../core/core.dart';
 import '../../home.dart';
 import '../widgets/banner_slider.dart';
@@ -13,6 +15,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.dismissLoadingDialog();
     final product = ProductModel(
       name: 'RM. Padang Sejahtera',
       imageUrl:
@@ -64,18 +67,23 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomText.h4('Hello, Fauzan Abdillah'),
-                      LabelIcon(
-                        icon: Icon(
-                          Icons.place_outlined,
-                          size: 14.0,
-                        ),
-                        data: 'Jakarta Selatan',
+                  BlocBuilder<AuthBloc, AuthState>(
+                    builder: (context, state) => state.maybeWhen(
+                      orElse: () => const SizedBox.shrink(),
+                      success: (data) => Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          CustomText.h4('Hello, ${data.name}'),
+                          LabelIcon(
+                            icon: const Icon(
+                              Icons.place_outlined,
+                              size: 14.0,
+                            ),
+                            data: data.address,
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                   IconButton(
                     onPressed: () =>

@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 
+import '../data/models/models.dart';
 import '../presentation/pages/pages.dart';
 
 class AuthRouter {
@@ -19,7 +20,10 @@ class AuthRouter {
             GoRoute(
               name: verification,
               path: verificationPath,
-              builder: (context, state) => const VerificationPage(),
+              builder: (context, state) {
+                final args = state.extra as RegisterRequest;
+                return VerificationPage(request: args);
+              },
             ),
           ],
         ),

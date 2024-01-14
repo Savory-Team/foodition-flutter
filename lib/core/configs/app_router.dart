@@ -1,3 +1,4 @@
+import 'package:chucker_flutter/chucker_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -7,6 +8,8 @@ import '../../features/introduction/introduction.dart';
 
 class AppRouter {
   final router = GoRouter(
+    debugLogDiagnostics: true,
+    observers: [ChuckerFlutter.navigatorObserver],
     initialLocation: IntroductionRouter.splashPath,
     routes: [
       ...Introduction.routes,
