@@ -35,6 +35,15 @@ class AuthRemoteDatasource {
     }
   }
 
+  Future<bool> reSendOtp(String email) async {
+    try {
+      await _dio.get('auth/otp', queryParameters: {'email': email});
+      return true;
+    } on DioException catch (e) {
+      throw e.response?.data['message'];
+    }
+  }
+
   Future<ApiBaseResponse<UserResponse>> show(String token) async {
     try {
       final response = await _dio.get('user/me/detail',

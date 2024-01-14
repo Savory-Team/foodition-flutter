@@ -54,6 +54,16 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
+  Future<Either<String, bool>> reSendOtp(String email) async {
+    try {
+      final result = await _remoteDatasource.reSendOtp(email);
+      return Right(result);
+    } catch (e) {
+      return Left(e.toString());
+    }
+  }
+
+  @override
   Future<Either<String, bool>> logout() async {
     try {
       await _userDB.removeToken();

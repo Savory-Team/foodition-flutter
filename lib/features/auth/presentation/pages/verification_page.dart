@@ -15,6 +15,7 @@ class VerificationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isReSendOtp = ValueNotifier(false);
     return Scaffold(
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
@@ -53,12 +54,23 @@ class VerificationPage extends StatelessWidget {
             Row(
               children: [
                 const CustomText.h6('Didn\'t receive any code? '),
-                InkWell(
-                  onTap: () {
-                    context.showSuccessMessage('OTP berhasil dikirim!');
-                  },
-                  child: const CustomText.h6('Resend Code',
-                      fontWeight: FontWeight.bold),
+                ValueListenableBuilder(
+                  valueListenable: isReSendOtp,
+                  builder: (context, value, _) => InkWell(
+                    onTap: value
+                        ? () {
+                            context
+                                .read<AuthBloc>()
+                                .add(AuthEvent.reSendOtp(request.email));
+                            context.showSuccessMessage('OTP berhasil dikirim!');
+                          }
+                        : null,
+                    child: CustomText.h6(
+                      'Resend Code',
+                      fontWeight: FontWeight.bold,
+                      color: value ? AppColors.black : AppColors.grey,
+                    ),
+                  ),
                 ),
               ],
             ),

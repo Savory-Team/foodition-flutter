@@ -43,6 +43,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       );
     });
 
+    on<_ReSendOtp>((event, emit) async {
+      await _repository.reSendOtp(event.email);
+    });
+
     on<_GetData>((event, emit) async {
       emit(const _Loading());
       final result = await _repository.show();
