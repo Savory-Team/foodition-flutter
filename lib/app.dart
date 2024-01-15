@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'core/core.dart';
 import 'features/auth/core/core_class.dart';
+import 'features/foodition/core/core_class.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -16,6 +17,7 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         ...Auth.blocProviders,
+        ...Foodition.blocProviders,
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

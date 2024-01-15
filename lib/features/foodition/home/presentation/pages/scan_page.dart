@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -18,111 +19,119 @@ class ScanPage extends StatefulWidget {
 class _ScanPageState extends State<ScanPage> {
   final imagePicker = ImagePicker();
   XFile? xFile;
-  final result = PredictionResult(
-    status: PredictionStatus.inappropriate,
-    result: 'Makanan ini Layak',
-    explanation:
-        'Lorem ipsum dolor sit amet consectetur. Aliquet tellus duis quam cursus sollicitudin non diam aliquam ipsum. Tellus arcu scelerisque nibh ut posuere odio mauris.',
-  );
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppBar(
-        title: const Text('Scan Kelayakan Makanan'),
-      ),
-      body: xFile != null
-          ? Center(
-              child: Image.file(
-                File(xFile!.path),
-                width: context.deviceWidth,
-                height: context.deviceHeight,
-                fit: BoxFit.contain,
-              ),
-            )
-          : Center(
-              child: Assets.images.image.image(height: 50.0),
-            ),
-      bottomNavigationBar: ColoredBox(
-        color: AppColors.white,
-        child: Padding(
-          padding: PaddingAll.spacing20pt,
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Row(
+  void showResultPredict(PredictionResult data) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+        backgroundColor: AppColors.white,
+        shape: const RoundedRectangleBorder(
+          borderRadius: AppBorderRadius.radius8pt,
+        ),
+        title: data.status.isEdible ? CustomText.h3(data.result) : null,
+        content: data.status.isEdible
+            ? CustomText.h6(data.explanation)
+            : Column(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Flexible(
-                    child: Button.outlined(
-                      onPressed: () async {
-                        final result = await imagePicker.pickImage(
-                            source: ImageSource.gallery);
-                        xFile = result;
-                        setState(() {});
-                      },
-                      label: 'Gallery',
-                    ),
-                  ),
-                  const SpaceWidth(AppDimens.spacing16pt),
-                  Flexible(
-                    child: Button.outlined(
-                      onPressed: () async {
-                        final result = await imagePicker.pickImage(
-                            source: ImageSource.camera);
-                        xFile = result;
-                        setState(() {});
-                      },
-                      label: 'Camera',
-                    ),
+                  Assets.images.failed.image(width: 150.0),
+                  const SpaceHeight(AppDimens.spacing24pt),
+                  const CustomText.h3(
+                    'Maaf\nMakanan ini sudah tidak layak untuk dimakan',
+                    textAlign: TextAlign.center,
                   ),
                 ],
               ),
-              const SpaceHeight(AppDimens.spacing16pt),
-              Button.filled(
-                disabled: xFile == null,
-                onPressed: () async {
-                  await showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        backgroundColor: AppColors.white,
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: AppBorderRadius.radius8pt,
-                        ),
-                        title: result.status.isProper
-                            ? CustomText.h3(result.result)
-                            : null,
-                        content: result.status.isProper
-                            ? CustomText.h6(result.explanation)
-                            : Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Assets.images.failed.image(width: 150.0),
-                                  const SpaceHeight(AppDimens.spacing24pt),
-                                  const CustomText.h3(
-                                    'Maaf\nMakanan ini sudah tidak layak untuk dimakan',
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ],
-                              ),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              xFile = null;
-                              context.pop();
-                              setState(() {});
-                            },
-                            child: const CustomText.h3('OK'),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-                label: 'Prediksi',
+        actions: [
+          TextButton(
+            onPressed: () => context.pop(),
+            child: const CustomText.h3('OK'),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocListener<MlBloc, MlState>(
+      listener: (context, state) {
+        state.maybeWhen(
+          orElse: () => context.dismissLoadingDialog(),
+          loading: () => context.showLoadingDialog(),
+          success: (data) {
+            context.dismissLoadingDialog();
+            showResultPredict(data);
+          },
+          error: (message) {
+            context.dismissLoadingDialog();
+            context.showErrorMessage(message);
+          },
+        );
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.background,
+        appBar: AppBar(
+          title: const Text('Scan Kelayakan Makanan'),
+        ),
+        body: xFile != null
+            ? Center(
+                child: Image.file(
+                  File(xFile!.path),
+                  width: context.deviceWidth,
+                  height: context.deviceHeight,
+                  fit: BoxFit.contain,
+                ),
+              )
+            : Center(
+                child: Assets.images.image.image(height: 50.0),
               ),
-            ],
+        bottomNavigationBar: ColoredBox(
+          color: AppColors.white,
+          child: Padding(
+            padding: PaddingAll.spacing20pt,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    Flexible(
+                      child: Button.outlined(
+                        onPressed: () async {
+                          final result = await imagePicker.pickImage(
+                              source: ImageSource.gallery);
+                          xFile = result;
+                          setState(() {});
+                        },
+                        label: 'Gallery',
+                      ),
+                    ),
+                    const SpaceWidth(AppDimens.spacing16pt),
+                    Flexible(
+                      child: Button.outlined(
+                        onPressed: () async {
+                          final result = await imagePicker.pickImage(
+                              source: ImageSource.camera);
+                          xFile = result;
+                          setState(() {});
+                        },
+                        label: 'Camera',
+                      ),
+                    ),
+                  ],
+                ),
+                const SpaceHeight(AppDimens.spacing16pt),
+                Button.filled(
+                  disabled: xFile == null,
+                  onPressed: () {
+                    context
+                        .read<MlBloc>()
+                        .add(MlEvent.predict(file: File(xFile!.path)));
+                  },
+                  label: 'Prediksi',
+                ),
+              ],
+            ),
           ),
         ),
       ),

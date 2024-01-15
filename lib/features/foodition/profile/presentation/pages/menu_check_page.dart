@@ -21,7 +21,7 @@ class _MenuCheckPageState extends State<MenuCheckPage> {
   final imagePicker = ImagePicker();
   XFile? xFile;
   final result = PredictionResult(
-    status: PredictionStatus.proper,
+    status: PredictionStatus.edible,
     result: 'Makanan ini Layak',
     explanation:
         'Lorem ipsum dolor sit amet consectetur. Aliquet tellus duis quam cursus sollicitudin non diam aliquam ipsum. Tellus arcu scelerisque nibh ut posuere odio mauris.',
@@ -76,10 +76,10 @@ class _MenuCheckPageState extends State<MenuCheckPage> {
                     shape: const RoundedRectangleBorder(
                       borderRadius: AppBorderRadius.radius8pt,
                     ),
-                    title: result.status.isProper
+                    title: result.status.isEdible
                         ? CustomText.h3(result.result)
                         : null,
-                    content: result.status.isProper
+                    content: result.status.isEdible
                         ? CustomText.h6(result.explanation)
                         : Column(
                             mainAxisSize: MainAxisSize.min,
@@ -95,7 +95,7 @@ class _MenuCheckPageState extends State<MenuCheckPage> {
                     actions: [
                       TextButton(
                         onPressed: () {
-                          if (result.status.isProper) {
+                          if (result.status.isEdible) {
                             context
                                 .pushReplacementNamed(FooditionRouter.addMenu);
                           } else {

@@ -1,7 +1,7 @@
 enum PredictionStatus {
-  proper,
-  inappropriate;
+  edible,
+  inedible;
 
-  bool get isProper => this == PredictionStatus.proper;
-  bool get isInappropriate => this == PredictionStatus.inappropriate;
+  bool get isEdible => this == PredictionStatus.edible;
+  bool get isInedible => this == PredictionStatus.inedible;
 }
