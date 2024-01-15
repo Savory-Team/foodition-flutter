@@ -1,4 +1,5 @@
 import '../../../core/injection/injector.dart';
+import '../../../core/networking/api_client.dart';
 import '../data/datasources/datasources.dart';
 import '../data/repositories/repositories.dart';
 import '../domain/repositories/repositories.dart';
@@ -17,6 +18,6 @@ class AuthDepedency {
 
     /// [DATASOURCE]
     locator.registerLazySingleton<AuthRemoteDatasource>(
-        () => AuthRemoteDatasource(locator()));
+        () => AuthRemoteDatasource(ApiClient().instance));
   }
 }
