@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import '../../../domain/models/user_model.dart';
+import '../../../domain/models/models.dart';
 
 UserResponse userResponseFromJson(String str) =>
     UserResponse.fromJson(json.decode(str));
@@ -12,28 +12,41 @@ UserResponse userResponseFromJson(String str) =>
 String userResponseToJson(UserResponse data) => json.encode(data.toJson());
 
 class UserResponse {
-  final String? image;
-  final String? nama;
-  final String? username;
-  final String? bio;
   final String? userId;
+  final String? nama;
   final String? email;
+  final String? image;
+  final String? username;
+  final dynamic bio;
   final String? noHp;
   final String? jenisKelamin;
   final String? tanggalLahir;
+  final String? labelAlamat;
+  final String? negara;
+  final String? provinsi;
+  final String? kotaKab;
+  final String? kecamatan;
+  final String? kelurahan;
+  final String? alamatLengkap;
 
   UserResponse({
-    this.image,
+    this.userId,
     this.nama,
+    this.email,
+    this.image,
     this.username,
     this.bio,
-    this.userId,
-    this.email,
     this.noHp,
     this.jenisKelamin,
     this.tanggalLahir,
+    this.labelAlamat,
+    this.negara,
+    this.provinsi,
+    this.kotaKab,
+    this.kecamatan,
+    this.kelurahan,
+    this.alamatLengkap,
   });
-
   UserModel toDomain() => UserModel(
         imageUrl: image ??
             'https://storage.googleapis.com/savory/api-service/user/default-user-image.png',
@@ -45,34 +58,52 @@ class UserResponse {
         phoneNumber: noHp,
         gender: jenisKelamin,
         birthdate: DateTime.tryParse(tanggalLahir ?? ''),
+        address: AddressModel(
+          labelAddress: labelAlamat ?? '',
+          country: negara ?? '',
+          province: provinsi ?? ';',
+          city: kotaKab ?? '',
+          subdistrict: kecamatan ?? '',
+          village: kelurahan ?? '',
+          address: alamatLengkap ?? '',
+        ),
       );
 
   factory UserResponse.fromJson(Map<String, dynamic> json) => UserResponse(
-        image: json['image'],
+        userId: json['userID'],
         nama: json['nama'],
+        email: json['email'],
+        image: json['image'],
         username: json['username'],
         bio: json['bio'],
-        userId: json['userID'],
-        email: json['email'],
         noHp: json['noHp'],
         jenisKelamin: json['jenisKelamin'],
         tanggalLahir: json['tanggalLahir'],
+        labelAlamat: json['labelAlamat'],
+        negara: json['negara'],
+        provinsi: json['provinsi'],
+        kotaKab: json['kotaKab'],
+        kecamatan: json['kecamatan'],
+        kelurahan: json['kelurahan'],
+        alamatLengkap: json['alamatLengkap'],
       );
 
   Map<String, dynamic> toJson() => {
-        'image': image,
+        'userID': userId,
         'nama': nama,
+        'email': email,
+        'image': image,
         'username': username,
         'bio': bio,
-        'userID': userId,
-        'email': email,
         'noHp': noHp,
         'jenisKelamin': jenisKelamin,
         'tanggalLahir': tanggalLahir,
+        'labelAlamat': labelAlamat,
+        'negara': negara,
+        'provinsi': provinsi,
+        'kotaKab': kotaKab,
+        'kecamatan': kecamatan,
+        'kelurahan': kelurahan,
+        'alamatLengkap': alamatLengkap,
       };
-
-  @override
-  String toString() {
-    return 'UserResponse(image: $image, nama: $nama, username: $username, bio: $bio, userId: $userId, email: $email, noHp: $noHp, jenisKelamin: $jenisKelamin, tanggalLahir: $tanggalLahir)';
-  }
 }

@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 
 import '../home/domain/models/models.dart';
 import '../home/presentation/pages/pages.dart';
+import '../profile/domain/models/user_model.dart';
 import '../profile/presentation/pages/pages.dart';
 
 part 'enums/root_tab.dart';
@@ -66,44 +67,52 @@ class FooditionRouter {
             GoRoute(
               name: editBio,
               path: editBioPath,
-              builder: (context, state) => const EditBioPage(),
+              builder: (context, state) =>
+                  EditBioPage((state.extra as UserModel).bio ?? ''),
             ),
             GoRoute(
               name: editBirthdate,
               path: editBirthdatePath,
-              builder: (context, state) => const EditBirthdatePage(),
+              builder: (context, state) => EditBirthdatePage(
+                  (state.extra as UserModel).birthdate ?? DateTime(0000)),
             ),
             GoRoute(
               name: editEmail,
               path: editEmailPath,
-              builder: (context, state) => const EditEmailPage(),
+              builder: (context, state) =>
+                  EditEmailPage((state.extra as UserModel).email),
             ),
             GoRoute(
               name: editGender,
               path: editGenderPath,
-              builder: (context, state) => const EditGenderPage(),
+              builder: (context, state) =>
+                  EditGenderPage((state.extra as UserModel).gender ?? ''),
             ),
             GoRoute(
               name: editName,
               path: editNamePath,
-              builder: (context, state) => const EditNamePage(),
+              builder: (context, state) =>
+                  EditNamePage((state.extra as UserModel).name),
             ),
             GoRoute(
               name: editPhoneNumber,
               path: editPhoneNumberPath,
-              builder: (context, state) => const EditPhoneNumberPage(),
+              builder: (context, state) => EditPhoneNumberPage(
+                  (state.extra as UserModel).phoneNumber ?? ''),
             ),
             GoRoute(
               name: editUsername,
               path: editUsernamePath,
-              builder: (context, state) => const EditUsernamePage(),
+              builder: (context, state) =>
+                  EditUsernamePage((state.extra as UserModel).username ?? ''),
             ),
           ],
         ),
         GoRoute(
           name: editAddress,
           path: editAddressPath,
-          builder: (context, state) => const EditAddressPage(),
+          builder: (context, state) =>
+              EditAddressPage((state.extra as UserModel).address),
         ),
         GoRoute(
           name: editPassword,

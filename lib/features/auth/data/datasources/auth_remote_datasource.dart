@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 
-import '../../../../core/networking/networking.dart';
 import '../models/models.dart';
 
 class AuthRemoteDatasource {
@@ -39,19 +38,6 @@ class AuthRemoteDatasource {
     try {
       await _dio.get('auth/otp', queryParameters: {'email': email});
       return true;
-    } on DioException catch (e) {
-      throw e.response?.data['message'];
-    }
-  }
-
-  Future<ApiBaseResponse<UserResponse>> show(String token) async {
-    try {
-      final response = await _dio.get('user/me/detail',
-          options: Options(headers: {'Authorization': token}));
-      return ApiBaseResponse.fromJson(
-        response.data,
-        (json) => UserResponse.fromJson(json),
-      );
     } on DioException catch (e) {
       throw e.response?.data['message'];
     }

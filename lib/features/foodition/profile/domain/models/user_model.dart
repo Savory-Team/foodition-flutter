@@ -1,4 +1,5 @@
-import '../../../../core/core.dart';
+import '../../../../../core/core.dart';
+import 'address_model.dart';
 
 class UserModel {
   final String imageUrl;
@@ -10,7 +11,7 @@ class UserModel {
   final String? phoneNumber;
   final String? gender;
   final DateTime? birthdate;
-  final String address;
+  final AddressModel address;
 
   UserModel({
     required this.imageUrl,
@@ -22,13 +23,8 @@ class UserModel {
     required this.phoneNumber,
     required this.gender,
     required this.birthdate,
-    this.address = 'Indonesia',
+    required this.address,
   });
 
   String? get birthdateFormat => birthdate?.toFormattedDatetime();
-
-  @override
-  String toString() {
-    return 'UserModel(imageUrl: $imageUrl, name: $name, username: $username, bio: $bio, userId: $userId, email: $email, phoneNumber: $phoneNumber, gender: $gender, birthdate: $birthdate)';
-  }
 }

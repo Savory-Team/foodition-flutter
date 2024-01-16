@@ -9,6 +9,7 @@ import '../../../../../core/constants/constants.dart';
 import '../../../../auth/presentation/managers/auth/auth_bloc.dart';
 import '../../../../introduction/core/introduction_router.dart';
 import '../../../core/core.dart';
+import '../managers/user/user_bloc.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -27,7 +28,7 @@ class ProfilePage extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            BlocBuilder<AuthBloc, AuthState>(
+            BlocBuilder<UserBloc, UserState>(
               builder: (context, state) => state.maybeWhen(
                 orElse: () => const SizedBox.shrink(),
                 success: (data) => ListTile(
@@ -89,13 +90,23 @@ class ProfilePage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const CustomText.h4('Pengaturan Akun'),
-                    ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      onTap: () =>
-                          context.pushNamed(FooditionRouter.editAddress),
-                      leading: Assets.icons.location.svg(),
-                      title: const CustomText.h5('Alamat Saya'),
-                      subtitle: const CustomText.h7('Atur alamat belanja saya'),
+                    BlocBuilder<UserBloc, UserState>(
+                      builder: (context, state) {
+                        return ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          onTap: () => state.maybeWhen(
+                            orElse: () => null,
+                            success: (data) => context.pushNamed(
+                              FooditionRouter.editAddress,
+                              extra: data,
+                            ),
+                          ),
+                          leading: Assets.icons.location.svg(),
+                          title: const CustomText.h5('Alamat Saya'),
+                          subtitle:
+                              const CustomText.h7('Atur alamat belanja saya'),
+                        );
+                      },
                     ),
                     ListTile(
                       contentPadding: EdgeInsets.zero,

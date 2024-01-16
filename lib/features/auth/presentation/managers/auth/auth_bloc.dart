@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../data/models/models.dart';
-import '../../../domain/models/user_model.dart';
 import '../../../domain/repositories/repositories.dart';
 
 part 'auth_bloc.freezed.dart';
@@ -19,10 +18,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final result = await _repository.login(event.request);
       result.match(
         (error) => emit(_Error(message: error)),
-        (data) {
-          emit(const _SuccessListen());
-          add(const _GetData());
-        },
+        (data) => emit(const _SuccessListen()),
       );
     });
 
@@ -45,15 +41,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<_ReSendOtp>((event, emit) async {
       await _repository.reSendOtp(event.email);
-    });
-
-    on<_GetData>((event, emit) async {
-      emit(const _Loading());
-      final result = await _repository.show();
-      result.match(
-        (error) => emit(_Error(message: error)),
-        (data) => emit(_Success(data: data)),
-      );
     });
 
     on<_Logout>((event, emit) async {

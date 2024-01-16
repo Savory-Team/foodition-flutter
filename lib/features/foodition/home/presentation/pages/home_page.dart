@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../components/components.dart';
 import '../../../../../core/core.dart';
-import '../../../../auth/presentation/managers/auth/auth_bloc.dart';
 import '../../../core/core.dart';
+import '../../../profile/presentation/managers/user/user_bloc.dart';
 import '../../home.dart';
 import '../widgets/banner_slider.dart';
 import '../widgets/product_card.dart';
@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  BlocBuilder<AuthBloc, AuthState>(
+                  BlocBuilder<UserBloc, UserState>(
                     builder: (context, state) => state.maybeWhen(
                       orElse: () => const SizedBox.shrink(),
                       success: (data) => Column(
@@ -38,7 +38,8 @@ class HomePage extends StatelessWidget {
                               Icons.place_outlined,
                               size: 14.0,
                             ),
-                            data: data.address,
+                            data:
+                                '${data.address.subdistrict}, ${data.address.city}',
                           ),
                         ],
                       ),

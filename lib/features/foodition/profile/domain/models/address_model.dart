@@ -1,0 +1,19 @@
+class AddressModel {
+  final String labelAddress;
+  final String country;
+  final String province;
+  final String city;
+  final String subdistrict;
+  final String village;
+  final String address;
+
+  AddressModel({
+    required this.labelAddress,
+    required this.country,
+    required this.province,
+    required this.city,
+    required this.subdistrict,
+    required this.village,
+    required this.address,
+  });
+}

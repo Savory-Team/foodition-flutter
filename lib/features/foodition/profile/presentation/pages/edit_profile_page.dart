@@ -7,8 +7,8 @@ import 'package:go_router/go_router.dart';
 import '../../../../../components/components.dart';
 import '../../../../../core/assets/assets.dart';
 import '../../../../../core/constants/constants.dart';
-import '../../../../auth/presentation/managers/auth/auth_bloc.dart';
 import '../../../core/core.dart';
+import '../managers/user/user_bloc.dart';
 
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({super.key});
@@ -19,7 +19,7 @@ class EditProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Ubah Profile'),
       ),
-      body: BlocBuilder<AuthBloc, AuthState>(
+      body: BlocBuilder<UserBloc, UserState>(
         builder: (context, state) => state.maybeWhen(
           orElse: () => const SizedBox.shrink(),
           success: (data) => ListView(
@@ -57,7 +57,10 @@ class EditProfilePage extends StatelessWidget {
                     const CustomText.h4('Info Profile'),
                     const SpaceHeight(AppDimens.spacing20pt),
                     InkWell(
-                      onTap: () => context.pushNamed(FooditionRouter.editName),
+                      onTap: () => context.pushNamed(
+                        FooditionRouter.editName,
+                        extra: data,
+                      ),
                       child: Row(
                         children: [
                           const Expanded(flex: 1, child: CustomText.h6('Nama')),
@@ -71,8 +74,10 @@ class EditProfilePage extends StatelessWidget {
                     ),
                     const SpaceHeight(AppDimens.spacing16pt),
                     InkWell(
-                      onTap: () =>
-                          context.pushNamed(FooditionRouter.editUsername),
+                      onTap: () => context.pushNamed(
+                        FooditionRouter.editUsername,
+                        extra: data,
+                      ),
                       child: Row(
                         children: [
                           const Expanded(
@@ -93,7 +98,10 @@ class EditProfilePage extends StatelessWidget {
                     ),
                     const SpaceHeight(AppDimens.spacing16pt),
                     InkWell(
-                      onTap: () => context.pushNamed(FooditionRouter.editBio),
+                      onTap: () => context.pushNamed(
+                        FooditionRouter.editBio,
+                        extra: data,
+                      ),
                       child: Row(
                         children: [
                           const Expanded(flex: 1, child: CustomText.h6('Bio')),
@@ -146,7 +154,10 @@ class EditProfilePage extends StatelessWidget {
                     ),
                     const SpaceHeight(AppDimens.spacing16pt),
                     InkWell(
-                      onTap: () => context.pushNamed(FooditionRouter.editEmail),
+                      // onTap: () => context.pushNamed(
+                      //   FooditionRouter.editEmail,
+                      //   extra: data,
+                      // ),
                       child: Row(
                         children: [
                           const Expanded(
@@ -155,14 +166,17 @@ class EditProfilePage extends StatelessWidget {
                               flex: 2,
                               child: CustomText.h6(data.email,
                                   fontWeight: FontWeight.bold)),
-                          const Icon(Icons.chevron_right),
+                          const Icon(Icons.chevron_right,
+                              color: Colors.transparent),
                         ],
                       ),
                     ),
                     const SpaceHeight(AppDimens.spacing16pt),
                     InkWell(
-                      onTap: () =>
-                          context.pushNamed(FooditionRouter.editPhoneNumber),
+                      onTap: () => context.pushNamed(
+                        FooditionRouter.editPhoneNumber,
+                        extra: data,
+                      ),
                       child: Row(
                         children: [
                           const Expanded(
@@ -170,7 +184,7 @@ class EditProfilePage extends StatelessWidget {
                           if (data.phoneNumber != null)
                             Expanded(
                                 flex: 2,
-                                child: CustomText.h6(data.phoneNumber!,
+                                child: CustomText.h6('+62 ${data.phoneNumber!}',
                                     fontWeight: FontWeight.bold))
                           else
                             const Expanded(
@@ -181,8 +195,10 @@ class EditProfilePage extends StatelessWidget {
                     ),
                     const SpaceHeight(AppDimens.spacing16pt),
                     InkWell(
-                      onTap: () =>
-                          context.pushNamed(FooditionRouter.editGender),
+                      onTap: () => context.pushNamed(
+                        FooditionRouter.editGender,
+                        extra: data,
+                      ),
                       child: Row(
                         children: [
                           const Expanded(
@@ -201,8 +217,10 @@ class EditProfilePage extends StatelessWidget {
                     ),
                     const SpaceHeight(AppDimens.spacing16pt),
                     InkWell(
-                      onTap: () =>
-                          context.pushNamed(FooditionRouter.editBirthdate),
+                      onTap: () => context.pushNamed(
+                        FooditionRouter.editBirthdate,
+                        extra: data,
+                      ),
                       child: Row(
                         children: [
                           const Expanded(

@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/injection/injector.dart';
 import '../home/presentation/managers/managers.dart';
+import '../profile/presentation/managers/managers.dart';
 
 class FooditionBlocProviders {
   const FooditionBlocProviders._();
@@ -10,5 +11,6 @@ class FooditionBlocProviders {
     BlocProvider<MlBloc>(create: (_) => locator()),
     BlocProvider<ProductBloc>(create: (_) => locator()),
     BlocProvider<TransactionBloc>(create: (_) => locator()),
+    BlocProvider<UserBloc>(create: (_) => locator()),
   ];
 }

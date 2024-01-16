@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 
 import '../../../components/components.dart';
 import '../../../core/core.dart';
-import '../../auth/presentation/managers/auth/auth_bloc.dart';
 import '../../foodition/core/core.dart';
+import '../../foodition/profile/presentation/managers/user/user_bloc.dart';
 import '../core/introduction_router.dart';
 
 class SplashPage extends StatelessWidget {
@@ -13,8 +13,8 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<AuthBloc>().add(const AuthEvent.getData());
-    return BlocListener<AuthBloc, AuthState>(
+    context.read<UserBloc>().add(const UserEvent.getData());
+    return BlocListener<UserBloc, UserState>(
       listener: (context, state) => state.maybeWhen(
         orElse: () => null,
         success: (_) => context.goNamed(FooditionRouter.root),

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../components/components.dart';
-import '../../../../../core/constants/constants.dart';
+import '../../../../../core/core.dart';
+import '../managers/user/user_bloc.dart';
 
 class EditEmailPage extends StatefulWidget {
-  const EditEmailPage({super.key});
+  final String email;
+  const EditEmailPage(this.email, {super.key});
 
   @override
   State<EditEmailPage> createState() => _EditEmailPageState();
@@ -16,7 +19,7 @@ class _EditEmailPageState extends State<EditEmailPage> {
 
   @override
   void initState() {
-    controller = TextEditingController();
+    controller = TextEditingController(text: widget.email);
     super.initState();
   }
 
@@ -24,6 +27,7 @@ class _EditEmailPageState extends State<EditEmailPage> {
   void dispose() {
     controller.dispose();
     super.dispose();
+    context.dismissLoadingDialog();
   }
 
   @override
@@ -32,18 +36,36 @@ class _EditEmailPageState extends State<EditEmailPage> {
       appBar: AppBar(
         title: const Text('Edit Email'),
       ),
-      body: ListView(
-        padding: PaddingAll.spacing20pt,
-        children: [
-          const CustomText.h4('Email'),
-          const SpaceHeight(AppDimens.spacing8pt),
-          CustomTextField(
-            controller: controller,
-            label: 'Email',
-            icon: Icons.email,
-            keyboardType: TextInputType.emailAddress,
-          ),
-        ],
+      body: BlocListener<UserBloc, UserState>(
+        listener: (context, state) {
+          state.maybeWhen(
+            orElse: () => context.dismissLoadingDialog(),
+            loading: () => context.showLoadingDialog(),
+            success: (data) {
+              context.dismissLoadingDialog();
+              context.pop();
+              context.showSuccessMessage('Berhasil diperbarui!');
+            },
+            error: (message) {
+              context.dismissLoadingDialog();
+              context.pop();
+              context.showErrorMessage(message);
+            },
+          );
+        },
+        child: ListView(
+          padding: PaddingAll.spacing20pt,
+          children: [
+            const CustomText.h4('Email'),
+            const SpaceHeight(AppDimens.spacing8pt),
+            CustomTextField(
+              controller: controller,
+              label: 'Email',
+              icon: Icons.email,
+              keyboardType: TextInputType.emailAddress,
+            ),
+          ],
+        ),
       ),
       bottomNavigationBar: Padding(
         padding: PaddingAll.spacing20pt,
