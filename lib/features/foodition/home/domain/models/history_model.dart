@@ -8,7 +8,7 @@ class HistoryModel {
   final String storeName;
   final String storeAddress;
   final String imageUrl;
-  final DateTime date;
+  final String dateFormat;
   final HistoryStatus status;
   final double? rate;
 
@@ -19,12 +19,11 @@ class HistoryModel {
     required this.storeName,
     required this.storeAddress,
     required this.imageUrl,
-    required this.date,
+    required this.dateFormat,
     required this.status,
     this.rate,
   });
 
   bool get isNotRate => rate == null && status.isDone;
-  String get dateFormat => date.toFormattedDatetime();
   String get priceFormat => price.currencyFormatRp;
 }

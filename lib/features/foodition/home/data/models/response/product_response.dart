@@ -48,6 +48,7 @@ class ProductResponse {
   ProductModel toDomain() {
     final price = harga ?? 0;
     return ProductModel(
+      id: productId ?? '',
       name: namaRestoran ?? '',
       imageUrl: image ?? '',
       categories: kategori ?? [],
@@ -58,7 +59,8 @@ class ProductResponse {
       price: price,
       description:
           'Makanan ini ${status ? 'layak' : 'tidak layak'} untuk dimakan dan ini ${type ? 'cuma seharga ${price.currencyFormatRp}' : 'gratis untuk kamu'}.',
-      prices: [price, price + 5000, price + 10000, price + 20000],
+      prices: type ? [price, price + 5000, price + 10000, price + 30000] : [],
+      isPaid: type,
       paymentCategories: [
         PaymentCategory(
           name: 'Default',

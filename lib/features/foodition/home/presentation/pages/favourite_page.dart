@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../components/components.dart';
-import '../../../../../core/constants/constants.dart';
 import '../../../../../core/core.dart';
 import '../managers/product/product_bloc.dart';
 import '../widgets/widgets.dart';

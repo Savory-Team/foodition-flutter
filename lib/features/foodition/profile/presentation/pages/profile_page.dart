@@ -41,6 +41,8 @@ class ProfilePage extends StatelessWidget {
                       fit: BoxFit.cover,
                       placeholder: (context, url) =>
                           const Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) =>
+                          Assets.images.image.image(),
                     ),
                   ),
                   title: CustomText.h5(data.name,
@@ -68,6 +70,7 @@ class ProfilePage extends StatelessWidget {
               fit: BoxFit.cover,
               placeholder: (context, url) =>
                   const Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) => Assets.images.image.image(),
             ),
             const SpaceHeight(AppDimens.spacing12pt),
             ListTile(

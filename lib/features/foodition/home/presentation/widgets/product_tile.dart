@@ -44,9 +44,10 @@ class ProductTile extends StatelessWidget {
                 width: 170.0,
                 height: 170.0,
                 fit: BoxFit.cover,
-                placeholder: (context, url) => const Center(
-                  child: CircularProgressIndicator(),
-                ),
+                placeholder: (context, url) =>
+                    const Center(child: CircularProgressIndicator()),
+                errorWidget: (context, url, error) =>
+                    Assets.images.image.image(),
               ),
             ),
             Padding(

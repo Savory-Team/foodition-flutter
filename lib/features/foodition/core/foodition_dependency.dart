@@ -12,17 +12,22 @@ class FooditionDepedency {
     /// [STATE_MANAGEMENT]
     locator.registerFactory(() => MlBloc(locator()));
     locator.registerFactory(() => ProductBloc(locator()));
+    locator.registerFactory(() => TransactionBloc(locator()));
 
     /// [REPOSITORY]
     locator
         .registerLazySingleton<MlRepository>(() => MlRepositoryImpl(locator()));
     locator.registerLazySingleton<ProductRepository>(
         () => ProductRepositoryImpl(locator()));
+    locator.registerLazySingleton<TransactionRepository>(
+        () => TransactionRepositoryImpl(locator()));
 
     /// [DATASOURCE]
     locator.registerLazySingleton<MlRemoteDatasource>(() => MlRemoteDatasource(
         ApiClient(baseUrl: baseUrlML, useToken: true).instance));
     locator.registerLazySingleton<ProductRemoteDatasource>(
         () => ProductRemoteDatasource(ApiClient(useToken: true).instance));
+    locator.registerLazySingleton<TransactionRemoteDatasource>(
+        () => TransactionRemoteDatasource(ApiClient(useToken: true).instance));
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../components/components.dart';
+import '../../../../../core/assets/assets.gen.dart';
 import '../../../../../core/constants/constants.dart';
 
 class AddMenuPage extends StatefulWidget {
@@ -55,6 +56,7 @@ class _AddMenuPageState extends State<AddMenuPage> {
             fit: BoxFit.cover,
             placeholder: (context, url) =>
                 const Center(child: CircularProgressIndicator()),
+            errorWidget: (context, url, error) => Assets.images.image.image(),
           ),
           Padding(
             padding: PaddingAll.spacing20pt,

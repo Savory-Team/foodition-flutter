@@ -57,34 +57,54 @@ class HistoryDetailPage extends StatelessWidget {
           ),
           const SpaceHeight(AppDimens.spacing32pt),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const CustomText.h6('ID Transaksi'),
-              const Spacer(),
-              CustomText.h6(data.id),
+              Flexible(
+                child: CustomText.h6(
+                  data.id,
+                  textAlign: TextAlign.end,
+                ),
+              ),
             ],
           ),
           const SpaceHeight(AppDimens.spacing12pt),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const CustomText.h6('Nominal Pembayaran'),
-              const Spacer(),
-              CustomText.h6(data.priceFormat),
+              Flexible(
+                child: CustomText.h6(
+                  data.priceFormat,
+                  textAlign: TextAlign.end,
+                ),
+              ),
             ],
           ),
           const SpaceHeight(AppDimens.spacing12pt),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const CustomText.h6('Nama Restoran'),
-              const Spacer(),
-              CustomText.h6(data.storeName),
+              Flexible(
+                child: CustomText.h6(
+                  data.storeName,
+                  textAlign: TextAlign.end,
+                ),
+              ),
             ],
           ),
           const SpaceHeight(AppDimens.spacing12pt),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const CustomText.h6('Alamat Restoran'),
-              const Spacer(),
-              CustomText.h6(data.storeAddress),
+              Flexible(
+                child: CustomText.h6(
+                  data.storeAddress,
+                  textAlign: TextAlign.end,
+                ),
+              ),
             ],
           ),
           const SpaceHeight(AppDimens.spacing32pt),

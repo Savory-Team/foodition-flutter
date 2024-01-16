@@ -20,7 +20,7 @@ class SalesHistoryPage extends StatelessWidget {
         storeAddress: '123 Pizza Street',
         imageUrl:
             'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        date: DateTime(2023, 12, 31),
+        dateFormat: '1 Januari 2024',
         status: HistoryStatus.done,
         rate: 4.5,
       ),
@@ -32,7 +32,7 @@ class SalesHistoryPage extends StatelessWidget {
         storeAddress: '456 Pasta Lane',
         imageUrl:
             'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        date: DateTime(2023, 11, 15),
+        dateFormat: '1 Januari 2024',
         status: HistoryStatus.deliver,
         rate: 4.8,
       ),
@@ -44,7 +44,7 @@ class SalesHistoryPage extends StatelessWidget {
         storeAddress: '789 Rice Avenue',
         imageUrl:
             'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        date: DateTime(2023, 10, 20),
+        dateFormat: '1 Januari 2024',
         status: HistoryStatus.done,
       ),
       HistoryModel(
@@ -55,7 +55,7 @@ class SalesHistoryPage extends StatelessWidget {
         storeAddress: '101 Burger Blvd',
         imageUrl:
             'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        date: DateTime(2023, 9, 5),
+        dateFormat: '1 Januari 2024',
         status: HistoryStatus.canceled,
       ),
       HistoryModel(
@@ -66,7 +66,7 @@ class SalesHistoryPage extends StatelessWidget {
         storeAddress: '202 Salad Square',
         imageUrl:
             'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        date: DateTime(2023, 8, 12),
+        dateFormat: '1 Januari 2024',
         status: HistoryStatus.pending,
       ),
       HistoryModel(
@@ -77,7 +77,7 @@ class SalesHistoryPage extends StatelessWidget {
         storeAddress: '303 Sushi Street',
         imageUrl:
             'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        date: DateTime(2023, 7, 17),
+        dateFormat: '1 Januari 2024',
         status: HistoryStatus.deliver,
         rate: 4.9,
       ),
@@ -89,7 +89,7 @@ class SalesHistoryPage extends StatelessWidget {
         storeAddress: '404 Steak Avenue',
         imageUrl:
             'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        date: DateTime(2023, 6, 22),
+        dateFormat: '1 Januari 2024',
         status: HistoryStatus.done,
         rate: 4.7,
       ),
@@ -101,7 +101,7 @@ class SalesHistoryPage extends StatelessWidget {
         storeAddress: '505 Pancake Place',
         imageUrl:
             'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        date: DateTime(2023, 5, 1),
+        dateFormat: '1 Januari 2024',
         status: HistoryStatus.deliver,
       ),
     ];

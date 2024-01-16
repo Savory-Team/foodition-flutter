@@ -35,6 +35,8 @@ class EditProfilePage extends StatelessWidget {
                     fit: BoxFit.cover,
                     placeholder: (context, url) =>
                         const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) =>
+                        Assets.images.image.image(),
                   ),
                 ),
               ),

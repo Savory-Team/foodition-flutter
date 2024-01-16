@@ -3,6 +3,7 @@ import '../enums/enums.dart';
 import 'models.dart';
 
 class ProductModel {
+  final String id;
   final String name;
   final String imageUrl;
   final List<String> categories;
@@ -16,8 +17,10 @@ class ProductModel {
   final List<PaymentCategory> paymentCategories;
   final PaymentMethod paymentMethod;
   final PickUpMethod pickUpMethod;
+  final bool isPaid;
 
   ProductModel({
+    required this.id,
     required this.name,
     required this.imageUrl,
     required this.categories,
@@ -31,6 +34,7 @@ class ProductModel {
     required this.paymentCategories,
     this.paymentMethod = PaymentMethod.cod,
     this.pickUpMethod = PickUpMethod.self,
+    required this.isPaid,
   });
 
   String get priceFormat => price.currencyFormatRp;

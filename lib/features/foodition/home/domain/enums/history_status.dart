@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../../../core/constants/colors.dart';
 
 enum HistoryStatus {
-  pending('pending'),
-  deliver('deliver'),
-  done('done'),
-  canceled('canceled'),
-  none('none');
+  pending('0'),
+  deliver('1'),
+  done('2'),
+  canceled('3');
 
   const HistoryStatus(this.status);
   final String status;
@@ -20,7 +19,7 @@ enum HistoryStatus {
   factory HistoryStatus.fromStatus(String status) {
     return values.firstWhere(
       (value) => value.status == status,
-      orElse: () => HistoryStatus.none,
+      orElse: () => HistoryStatus.canceled,
     );
   }
 
