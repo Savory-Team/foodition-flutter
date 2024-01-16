@@ -35,9 +35,9 @@ class ProductDetailPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CustomText.h3(data.name),
-                    const Spacer(),
+                    Flexible(child: CustomText.h3(data.name)),
                     IconButton(
                       onPressed: () {},
                       icon: Icon(

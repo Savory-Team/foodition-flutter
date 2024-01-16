@@ -25,7 +25,10 @@ class FooditionRouter {
         GoRoute(
           name: search,
           path: searchPath,
-          builder: (context, state) => const SearchPage(),
+          builder: (context, state) {
+            final args = state.extra as List<ProductModel>;
+            return SearchPage(products: args);
+          },
         ),
         GoRoute(
           name: productDetail,

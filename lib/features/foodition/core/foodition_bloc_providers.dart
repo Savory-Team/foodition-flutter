@@ -8,5 +8,6 @@ class FooditionBlocProviders {
 
   static final List<BlocProvider> init = [
     BlocProvider<MlBloc>(create: (_) => locator()),
+    BlocProvider<ProductBloc>(create: (_) => locator()),
   ];
 }

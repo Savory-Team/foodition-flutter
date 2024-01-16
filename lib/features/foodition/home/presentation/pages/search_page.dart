@@ -6,53 +6,14 @@ import '../../domain/models/models.dart';
 import '../widgets/product_tile.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+  final List<ProductModel> products;
+  const SearchPage({super.key, required this.products});
 
   @override
   State<SearchPage> createState() => _SearchPageState();
 }
 
 class _SearchPageState extends State<SearchPage> {
-  final product = ProductModel(
-    name: 'Rumah Makan Masakan Padang Sejahtera',
-    imageUrl:
-        'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-    categories: ['Seafood', 'Masakan Padang', 'Home Made'],
-    address: 'Jln. Pahlawan, No.16, Kabupaten Sleman, Yogyakarta, 12345',
-    rate: 4.8,
-    isFavourite: false,
-    stock: 5,
-    price: 10000,
-    description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    prices: [10000, 15000, 20000, 40000],
-    paymentCategories: [
-      PaymentCategory(
-        name: 'Default',
-        restaurant: 0.33,
-        foodition: 0.33,
-        donation: 0.34,
-      ),
-      PaymentCategory(
-        name: 'Extra untuk Restoran',
-        restaurant: 0.33,
-        foodition: 0.33,
-        donation: 0.34,
-      ),
-      PaymentCategory(
-        name: 'Extra untuk Foodition',
-        restaurant: 0.33,
-        foodition: 0.33,
-        donation: 0.34,
-      ),
-      PaymentCategory(
-        name: 'Extra untuk Donasi',
-        restaurant: 0.33,
-        foodition: 0.33,
-        donation: 0.34,
-      ),
-    ],
-  );
   late final List<ProductModel> products;
   late List<ProductModel> searchResult;
   late final TextEditingController searchController;
@@ -60,7 +21,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   void initState() {
     searchController = TextEditingController();
-    products = [product, product, product, product, product, product];
+    products = widget.products;
     searchResult = products;
     super.initState();
   }
@@ -82,7 +43,7 @@ class _SearchPageState extends State<SearchPage> {
               controller: searchController,
               onChanged: (value) {
                 searchResult = products
-                    .where((element) => element.name
+                    .where((element) => (element.name + element.address)
                         .toLowerCase()
                         .contains(searchController.text.toLowerCase()))
                     .toList();
@@ -120,16 +81,15 @@ class _SearchPageState extends State<SearchPage> {
                   ),
 
                   /// Second Tab
-                  const CustomShimmerList(length: 3),
-                  // ListView.separated(
-                  //   padding: PaddingAll.spacing20pt,
-                  //   itemCount: searchResult.length,
-                  //   separatorBuilder: (context, index) =>
-                  //       const SpaceHeight(AppDimens.spacing16pt),
-                  //   itemBuilder: (context, index) => ProductTile(
-                  //     data: searchResult[index],
-                  //   ),
-                  // ),
+                  ListView.separated(
+                    padding: PaddingAll.spacing20pt,
+                    itemCount: searchResult.length,
+                    separatorBuilder: (context, index) =>
+                        const SpaceHeight(AppDimens.spacing16pt),
+                    itemBuilder: (context, index) => ProductTile(
+                      data: searchResult[index],
+                    ),
+                  ),
                 ],
               ),
       ),
