@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../components/components.dart';
 import '../../../../../core/core.dart';
-import '../../../home/domain/enums/enums.dart';
-import '../../../home/domain/models/history_model.dart';
+import '../../../home/presentation/managers/transaction/transaction_bloc.dart';
 import '../../../home/presentation/widgets/history_tile.dart';
 
 class SalesHistoryPage extends StatelessWidget {
@@ -11,112 +11,31 @@ class SalesHistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final histories = [
-      HistoryModel(
-        id: 'FDTN0123456789',
-        name: 'Pizza Margherita',
-        price: 56000,
-        storeName: 'Pizza Palace',
-        storeAddress: '123 Pizza Street',
-        imageUrl:
-            'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        dateFormat: '1 Januari 2024',
-        status: HistoryStatus.done,
-        rate: 4.5,
-      ),
-      HistoryModel(
-        id: 'FDTN0123456790',
-        name: 'Spaghetti Carbonara',
-        price: 48000,
-        storeName: 'Pasta House',
-        storeAddress: '456 Pasta Lane',
-        imageUrl:
-            'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        dateFormat: '1 Januari 2024',
-        status: HistoryStatus.deliver,
-        rate: 4.8,
-      ),
-      HistoryModel(
-        id: 'FDTN0123456791',
-        name: 'Chicken Rice',
-        price: 32000,
-        storeName: 'Rice Delight',
-        storeAddress: '789 Rice Avenue',
-        imageUrl:
-            'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        dateFormat: '1 Januari 2024',
-        status: HistoryStatus.done,
-      ),
-      HistoryModel(
-        id: 'FDTN0123456792',
-        name: 'Burger Deluxe',
-        price: 41000,
-        storeName: 'Burger Junction',
-        storeAddress: '101 Burger Blvd',
-        imageUrl:
-            'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        dateFormat: '1 Januari 2024',
-        status: HistoryStatus.canceled,
-      ),
-      HistoryModel(
-        id: 'FDTN0123456793',
-        name: 'Salad Mix',
-        price: 35000,
-        storeName: 'Green Eats',
-        storeAddress: '202 Salad Square',
-        imageUrl:
-            'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        dateFormat: '1 Januari 2024',
-        status: HistoryStatus.pending,
-      ),
-      HistoryModel(
-        id: 'FDTN0123456794',
-        name: 'Sushi Platter',
-        price: 57000,
-        storeName: 'Sushi Haven',
-        storeAddress: '303 Sushi Street',
-        imageUrl:
-            'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        dateFormat: '1 Januari 2024',
-        status: HistoryStatus.deliver,
-        rate: 4.9,
-      ),
-      HistoryModel(
-        id: 'FDTN0123456795',
-        name: 'Steak Dinner',
-        price: 76000,
-        storeName: 'Grill Masters',
-        storeAddress: '404 Steak Avenue',
-        imageUrl:
-            'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        dateFormat: '1 Januari 2024',
-        status: HistoryStatus.done,
-        rate: 4.7,
-      ),
-      HistoryModel(
-        id: 'FDTN0123456796',
-        name: 'Pancake Breakfast',
-        price: 21000,
-        storeName: 'Morning Delights',
-        storeAddress: '505 Pancake Place',
-        imageUrl:
-            'https://assets-pergikuliner.com/uploads/bootsy/image/18948/Nasi_Padang__pergikuliner.com_.jpeg',
-        dateFormat: '1 Januari 2024',
-        status: HistoryStatus.deliver,
-      ),
-    ];
-
+    context.read<TransactionBloc>().add(const TransactionEvent.getData());
     return Scaffold(
       backgroundColor: AppColors.background,
       appBar: AppBar(
         title: const Text('History Pembelian'),
       ),
-      body: ListView.separated(
-        itemCount: histories.length,
-        separatorBuilder: (context, index) =>
-            const SpaceHeight(AppDimens.spacing8pt),
-        itemBuilder: (context, index) => HistoryTile(
-          data: histories[index],
+      body: BlocBuilder<TransactionBloc, TransactionState>(
+        builder: (context, state) => state.maybeWhen(
+          orElse: () => const SizedBox.shrink(),
+          loading: () => const CustomShimmerList(length: 3),
+          empty: () => const EmptyState(),
+          error: (message) => ErrorState(
+            message: message,
+            onRefresh: () => context
+                .read<TransactionBloc>()
+                .add(const TransactionEvent.getData()),
+          ),
+          success: (histories) => ListView.separated(
+            itemCount: histories.length,
+            separatorBuilder: (context, index) =>
+                const SpaceHeight(AppDimens.spacing8pt),
+            itemBuilder: (context, index) => HistoryTile(
+              data: histories[index],
+            ),
+          ),
         ),
       ),
     );
