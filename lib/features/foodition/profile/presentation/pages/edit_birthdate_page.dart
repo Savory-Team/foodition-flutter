@@ -34,6 +34,21 @@ class _EditBirthdatePageState extends State<EditBirthdatePage> {
 
   @override
   Widget build(BuildContext context) {
+    Future<void> selectDate(BuildContext context) async {
+      final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(1900),
+        lastDate: DateTime.now(),
+      );
+
+      if (picked != null && picked != widget.birthdate) {
+        setState(() {
+          controller.text = '${picked.year}-${picked.month}-${picked.day}';
+        });
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Edit Tanggal Lahir'),
@@ -60,11 +75,16 @@ class _EditBirthdatePageState extends State<EditBirthdatePage> {
           children: [
             const CustomText.h4('Tanggal Lahir'),
             const SpaceHeight(AppDimens.spacing8pt),
-            CustomTextField(
-              controller: controller,
-              label: 'Tanggal Lahir',
-              icon: Icons.person,
-              keyboardType: TextInputType.datetime,
+            InkWell(
+              onTap: () => selectDate(context),
+              child: AbsorbPointer(
+                child: CustomTextField(
+                  controller: controller,
+                  label: 'Tanggal Lahir',
+                  icon: Icons.person,
+                  keyboardType: TextInputType.datetime,
+                ),
+              ),
             ),
           ],
         ),
@@ -77,6 +97,8 @@ class _EditBirthdatePageState extends State<EditBirthdatePage> {
             final date = DateTime.tryParse(controller.text);
             if (date != null) {
               context.read<UserBloc>().add(UserEvent.editBirthdate(date));
+            } else {
+              context.showErrorMessage('Fitur ini dalam pengembangan');
             }
           },
           label: 'Simpan',
