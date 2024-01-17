@@ -57,7 +57,10 @@ class ProductDetailPage extends StatelessWidget {
                     children: [
                       Flexible(child: CustomText.h3(data.name)),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          context
+                              .showErrorMessage('Fitur ini dalam pengembangan');
+                        },
                         icon: Icon(
                           data.isFavourite
                               ? Icons.favorite
