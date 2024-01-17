@@ -30,7 +30,7 @@ class _EditAddressPageState extends State<EditAddressPage> {
   void initState() {
     labelAddressController =
         TextEditingController(text: widget.data.labelAddress);
-    countryController = TextEditingController(text: widget.data.country);
+    countryController = TextEditingController(text: 'Indonesia');
     provinceController = TextEditingController(text: widget.data.province);
     cityController = TextEditingController(text: widget.data.city);
     subdistrictController =
@@ -110,6 +110,7 @@ class _EditAddressPageState extends State<EditAddressPage> {
                 controller: countryController,
                 label: 'Negara',
                 onChanged: (value) {},
+                readOnly: true,
               ),
               const SpaceHeight(AppDimens.spacing24pt),
               const CustomText.h4('Provinsi'),

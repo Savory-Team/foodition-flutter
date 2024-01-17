@@ -20,10 +20,17 @@ class MyStorePage extends StatelessWidget {
         title: const Text('Restoran Saya'),
       ),
       body: BlocConsumer<RestoBloc, RestoState>(
-        listener: (context, state) => state.maybeWhen(
-          orElse: () => context.dismissLoadingDialog(),
-          loading: () => context.showLoadingDialog(),
-        ),
+        listener: (context, state) {
+          state.maybeWhen(
+            orElse: () => context.dismissLoadingDialog(),
+            loading: () => context.showLoadingDialog(),
+            error: (message) {
+              context.dismissLoadingDialog();
+              context.showErrorMessage(message);
+              context.pop();
+            },
+          );
+        },
         builder: (context, state) => state.maybeWhen(
           orElse: () => const SizedBox.shrink(),
           success: (data) => ListView(

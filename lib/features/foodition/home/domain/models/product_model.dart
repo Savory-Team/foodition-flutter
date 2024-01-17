@@ -19,6 +19,7 @@ class ProductModel {
   final PickUpMethod pickUpMethod;
   final bool isPaid;
   final bool isActive;
+  final bool isResto;
 
   ProductModel({
     required this.id,
@@ -37,10 +38,52 @@ class ProductModel {
     this.pickUpMethod = PickUpMethod.self,
     required this.isPaid,
     required this.isActive,
+    this.isResto = false,
   });
 
   String get priceFormat => price.currencyFormatRp;
   List<String> get pricesFormat =>
       prices.map((e) => e.currencyFormatRp).toList();
   String get status => isActive ? 'Aktif' : 'Tidak Aktif';
+  bool get isFree => !isPaid;
+
+  ProductModel copyWith({
+    String? id,
+    String? name,
+    String? imageUrl,
+    List<String>? categories,
+    String? address,
+    double? rate,
+    bool? isFavourite,
+    int? stock,
+    int? price,
+    String? description,
+    List<int>? prices,
+    List<PaymentCategory>? paymentCategories,
+    PaymentMethod? paymentMethod,
+    PickUpMethod? pickUpMethod,
+    bool? isPaid,
+    bool? isActive,
+    bool? isResto,
+  }) {
+    return ProductModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      imageUrl: imageUrl ?? this.imageUrl,
+      categories: categories ?? this.categories,
+      address: address ?? this.address,
+      rate: rate ?? this.rate,
+      isFavourite: isFavourite ?? this.isFavourite,
+      stock: stock ?? this.stock,
+      price: price ?? this.price,
+      description: description ?? this.description,
+      prices: prices ?? this.prices,
+      paymentCategories: paymentCategories ?? this.paymentCategories,
+      paymentMethod: paymentMethod ?? this.paymentMethod,
+      pickUpMethod: pickUpMethod ?? this.pickUpMethod,
+      isPaid: isPaid ?? this.isPaid,
+      isActive: isActive ?? this.isActive,
+      isResto: isResto ?? this.isResto,
+    );
+  }
 }

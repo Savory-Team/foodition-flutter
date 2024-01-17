@@ -141,20 +141,20 @@ class ProfilePage extends StatelessWidget {
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       onTap: () {},
-                      leading: Assets.icons.location.svg(),
+                      leading: Assets.icons.information.svg(),
                       title: const CustomText.h5('Kenali Foodition'),
                     ),
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       onTap: () {},
-                      leading: Assets.icons.location.svg(),
+                      leading: Assets.icons.information.svg(),
                       title:
                           const CustomText.h5('Kebijakan dan Privacy Policy'),
                     ),
                     ListTile(
                       contentPadding: EdgeInsets.zero,
                       onTap: () {},
-                      leading: Assets.icons.location.svg(),
+                      leading: Assets.icons.information.svg(),
                       title: const CustomText.h5('Ulas Aplikasi Ini'),
                     ),
                   ],

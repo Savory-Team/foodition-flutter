@@ -93,7 +93,9 @@ class _EditRestaurantPageState extends State<EditRestaurantPage> {
             const SpaceHeight(AppDimens.spacing16pt),
             Center(
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  context.showErrorMessage('Fitur ini dalam pengembangan');
+                },
                 child: const CustomText.h5('Ubah Foto Restoran'),
               ),
             ),

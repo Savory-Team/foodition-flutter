@@ -16,7 +16,7 @@ class MenuTile extends StatelessWidget {
     return GestureDetector(
       onTap: () => context.pushNamed(
         FooditionRouter.productDetail,
-        extra: data,
+        extra: data.copyWith(isResto: true),
       ),
       child: Container(
         decoration: ShapeDecoration(

@@ -81,7 +81,7 @@ class UserRemoteDatasource {
   Future<ApiBaseResponse<bool>> editPhoneNumber(String phoneNumber) async {
     try {
       final response =
-          await _dio.put('user/me/noHp', data: {'noHp': '0$phoneNumber'});
+          await _dio.put('user/me/noHp', data: {'noHp': phoneNumber});
       return ApiBaseResponse.fromJson(response.data, (json) => true);
     } on DioException catch (e) {
       throw e.response?.data['message'];

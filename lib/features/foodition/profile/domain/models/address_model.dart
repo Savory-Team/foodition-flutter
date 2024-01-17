@@ -18,4 +18,8 @@ class AddressModel {
     required this.address,
     this.isResto = false,
   });
+
+  String get addressFormat => (subdistrict.isEmpty || city.isEmpty)
+      ? (city.isEmpty ? 'Indonesia' : city)
+      : '$subdistrict, $city';
 }

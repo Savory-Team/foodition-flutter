@@ -21,7 +21,7 @@ class ProductRequest {
     return FormData.fromMap({
       'image': await MultipartFile.fromFile(
         image.path,
-        filename: 'photo-resto.jpg',
+        filename: 'photo_resto.jpg',
       ),
       'status': status,
       'type': type,

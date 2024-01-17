@@ -16,7 +16,6 @@ class ProductDetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final priceSelected = ValueNotifier(data.priceFormat);
     final paymentCategorySelected = ValueNotifier(data.paymentCategories.first);
-
     return Scaffold(
       appBar: AppBar(
         title: Text(data.name),
@@ -120,151 +119,161 @@ class ProductDetailPage extends StatelessWidget {
                   const SpaceHeight(AppDimens.spacing12pt),
                   CustomText.h6(data.description),
                   const SpaceHeight(AppDimens.spacing24pt),
-                  const CustomText.h3('Bayar sesukamu'),
-                  const SpaceHeight(AppDimens.spacing16pt),
-                  ValueListenableBuilder(
-                    valueListenable: priceSelected,
-                    builder: (context, value, _) => Wrap(
-                      spacing: 8.0,
-                      runSpacing: 8.0,
-                      children: data.pricesFormat
-                          .map((item) => GestureDetector(
-                                onTap: () => priceSelected.value = item,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: value == item
-                                        ? null
-                                        : Border.all(color: AppColors.stroke),
-                                    borderRadius: AppBorderRadius.radius4pt,
-                                    color: value == item
-                                        ? AppColors.primary
-                                        : AppColors.background,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: AppDimens.spacing12pt,
-                                        vertical: AppDimens.spacing4pt),
-                                    child: CustomText.h6(
-                                      item,
-                                      color: value == item
-                                          ? AppColors.white
-                                          : AppColors.black,
-                                    ),
-                                  ),
-                                ),
-                              ))
-                          .toList(),
-                    ),
-                  ),
-                  const SpaceHeight(AppDimens.spacing16pt),
-                  ValueListenableBuilder(
-                    valueListenable: paymentCategorySelected,
-                    builder: (context, value, _) => ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      separatorBuilder: (context, index) =>
-                          const SpaceHeight(AppDimens.spacing8pt),
-                      itemCount: data.paymentCategories.length,
-                      itemBuilder: (context, index) {
-                        final item = data.paymentCategories[index];
-                        final check = value.name == item.name;
-                        return GestureDetector(
-                          onTap: () => paymentCategorySelected.value = item,
-                          child: Row(
-                            children: [
-                              Icon(
-                                check
-                                    ? Icons.radio_button_checked
-                                    : Icons.radio_button_off,
-                                color:
-                                    check ? AppColors.primary : AppColors.black,
-                              ),
-                              const SpaceWidth(AppDimens.spacing10pt),
-                              CustomText.h5(item.name),
-                              const Spacer(),
-                              InkWell(
-                                onTap: () => showModalBottomSheet(
-                                  context: context,
-                                  builder: (context) => ValueListenableBuilder(
-                                    valueListenable: priceSelected,
-                                    builder: (context, value, _) =>
-                                        CustomBottomSheet(
-                                      title: value,
-                                      content: ValueListenableBuilder(
-                                        valueListenable:
-                                            paymentCategorySelected,
-                                        builder: (context, value, _) => Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            CustomText.h4(
-                                                'Kategori : ${value.name}'),
-                                            const SpaceHeight(
-                                                AppDimens.spacing4pt),
-                                            CustomText.h4(
-                                                'Restoran : ${value.restaurantPercent}'),
-                                            const SpaceHeight(
-                                                AppDimens.spacing4pt),
-                                            CustomText.h4(
-                                                'Foodition : ${value.fooditionPercent}'),
-                                            const SpaceHeight(
-                                                AppDimens.spacing4pt),
-                                            CustomText.h4(
-                                                'Donasi : ${value.donationPercent}'),
-                                          ],
+                  if (!data.isResto) ...[
+                    if (data.isPaid) ...[
+                      const CustomText.h3('Bayar sesukamu'),
+                      const SpaceHeight(AppDimens.spacing16pt),
+                      ValueListenableBuilder(
+                        valueListenable: priceSelected,
+                        builder: (context, value, _) => Wrap(
+                          spacing: 8.0,
+                          runSpacing: 8.0,
+                          children: data.pricesFormat
+                              .map((item) => GestureDetector(
+                                    onTap: () => priceSelected.value = item,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        border: value == item
+                                            ? null
+                                            : Border.all(
+                                                color: AppColors.stroke),
+                                        borderRadius: AppBorderRadius.radius4pt,
+                                        color: value == item
+                                            ? AppColors.primary
+                                            : AppColors.background,
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: AppDimens.spacing12pt,
+                                            vertical: AppDimens.spacing4pt),
+                                        child: CustomText.h6(
+                                          item,
+                                          color: value == item
+                                              ? AppColors.white
+                                              : AppColors.black,
                                         ),
                                       ),
                                     ),
+                                  ))
+                              .toList(),
+                        ),
+                      ),
+                      const SpaceHeight(AppDimens.spacing16pt),
+                      ValueListenableBuilder(
+                        valueListenable: paymentCategorySelected,
+                        builder: (context, value, _) => ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          separatorBuilder: (context, index) =>
+                              const SpaceHeight(AppDimens.spacing8pt),
+                          itemCount: data.paymentCategories.length,
+                          itemBuilder: (context, index) {
+                            final item = data.paymentCategories[index];
+                            final check = value.name == item.name;
+                            return GestureDetector(
+                              onTap: () => paymentCategorySelected.value = item,
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    check
+                                        ? Icons.radio_button_checked
+                                        : Icons.radio_button_off,
+                                    color: check
+                                        ? AppColors.primary
+                                        : AppColors.black,
                                   ),
-                                ),
-                                child: const CustomText.h7('Detail'),
+                                  const SpaceWidth(AppDimens.spacing10pt),
+                                  CustomText.h5(item.name),
+                                  const Spacer(),
+                                  InkWell(
+                                    onTap: () => showModalBottomSheet(
+                                      context: context,
+                                      builder: (context) =>
+                                          ValueListenableBuilder(
+                                        valueListenable: priceSelected,
+                                        builder: (context, value, _) =>
+                                            CustomBottomSheet(
+                                          title: value,
+                                          content: ValueListenableBuilder(
+                                            valueListenable:
+                                                paymentCategorySelected,
+                                            builder: (context, value, _) =>
+                                                Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                CustomText.h4(
+                                                    'Kategori : ${value.name}'),
+                                                const SpaceHeight(
+                                                    AppDimens.spacing4pt),
+                                                CustomText.h4(
+                                                    'Restoran : ${value.restaurantPercent}'),
+                                                const SpaceHeight(
+                                                    AppDimens.spacing4pt),
+                                                CustomText.h4(
+                                                    'Foodition : ${value.fooditionPercent}'),
+                                                const SpaceHeight(
+                                                    AppDimens.spacing4pt),
+                                                CustomText.h4(
+                                                    'Donasi : ${value.donationPercent}'),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    child: const CustomText.h7('Detail'),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
-                        );
-                      },
+                            );
+                          },
+                        ),
+                      ),
+                      const SpaceHeight(AppDimens.spacing24pt),
+                    ],
+                    const CustomText.h6('Keterangan'),
+                    const SpaceHeight(AppDimens.spacing12pt),
+                    Row(
+                      children: [
+                        const CustomText.h3('Pembayaran'),
+                        const Spacer(),
+                        CustomText.h6(data.paymentMethod.value),
+                      ],
                     ),
-                  ),
-                  const SpaceHeight(AppDimens.spacing24pt),
-                  const CustomText.h6('Pembayaran'),
-                  const SpaceHeight(AppDimens.spacing12pt),
-                  Row(
-                    children: [
-                      const CustomText.h3('Keterangan'),
-                      const Spacer(),
-                      CustomText.h6(data.paymentMethod.value),
-                    ],
-                  ),
-                  const SpaceHeight(AppDimens.spacing8pt),
-                  Row(
-                    children: [
-                      const CustomText.h6('Metode Pengambilan'),
-                      const Spacer(),
-                      CustomText.h6(data.pickUpMethod.value),
-                    ],
-                  ),
-                  const SpaceHeight(AppDimens.spacing32pt),
+                    const SpaceHeight(AppDimens.spacing8pt),
+                    Row(
+                      children: [
+                        const CustomText.h6('Metode Pengambilan'),
+                        const Spacer(),
+                        CustomText.h6(data.pickUpMethod.value),
+                      ],
+                    ),
+                    const SpaceHeight(AppDimens.spacing32pt),
+                  ],
                 ],
               ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: PaddingAll.spacing20pt,
-        child: Button.filled(
-          onPressed: () {
-            context
-                .read<TransactionBloc>()
-                .add(TransactionEvent.order(TransactionRequest(
-                  productId: data.id,
-                  price: data.price,
-                  type: data.isPaid,
-                )));
-          },
-          label: 'Beli Sekarang',
-        ),
-      ),
+      bottomNavigationBar: data.isResto
+          ? null
+          : Padding(
+              padding: PaddingAll.spacing20pt,
+              child: Button.filled(
+                onPressed: () {
+                  context
+                      .read<TransactionBloc>()
+                      .add(TransactionEvent.order(TransactionRequest(
+                        productId: data.id,
+                        price: data.price,
+                        type: data.isPaid,
+                      )));
+                },
+                label: 'Beli Sekarang',
+              ),
+            ),
     );
   }
 }

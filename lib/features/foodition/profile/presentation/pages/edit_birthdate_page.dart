@@ -94,12 +94,12 @@ class _EditBirthdatePageState extends State<EditBirthdatePage> {
         child: Button.filled(
           disabled: false,
           onPressed: () {
-            final date = DateTime.tryParse(controller.text);
-            if (date != null) {
-              context.read<UserBloc>().add(UserEvent.editBirthdate(date));
-            } else {
-              context.showErrorMessage('Fitur ini dalam pengembangan');
-            }
+            // final date = DateTime.tryParse(controller.text);
+            // if (date != null) {
+            //   context.read<UserBloc>().add(UserEvent.editBirthdate(date));
+            // } else {
+            context.showErrorMessage('Fitur ini dalam pengembangan');
+            // }
           },
           label: 'Simpan',
         ),

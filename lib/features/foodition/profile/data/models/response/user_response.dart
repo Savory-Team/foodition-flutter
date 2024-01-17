@@ -61,7 +61,7 @@ class UserResponse {
         address: AddressModel(
           labelAddress: labelAlamat ?? '',
           country: negara ?? '',
-          province: provinsi ?? ';',
+          province: provinsi ?? '',
           city: kotaKab ?? '',
           subdistrict: kecamatan ?? '',
           village: kelurahan ?? '',

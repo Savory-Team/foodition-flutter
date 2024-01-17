@@ -24,30 +24,43 @@ class MenuListPage extends StatelessWidget {
           ),
         ],
       ),
-      body: BlocBuilder<ProductMeBloc, ProductMeState>(
-        builder: (context, state) => state.maybeWhen(
-          orElse: () => const SizedBox.shrink(),
-          loading: () => const CustomShimmerList(length: 4),
-          empty: () => Padding(
-            padding: EdgeInsets.only(top: context.deviceHeight / 4),
-            child: const Center(child: EmptyState()),
-          ),
-          error: (message) => Padding(
-            padding: EdgeInsets.only(top: context.deviceHeight / 4),
-            child: ErrorState(
-              message: message,
-              onRefresh: () => context
-                  .read<ProductMeBloc>()
-                  .add(const ProductMeEvent.getData()),
+      body: BlocListener<ProductMeBloc, ProductMeState>(
+        listener: (context, state) {
+          state.maybeWhen(
+            orElse: () => context.dismissLoadingDialog(),
+            loading: () => context.showLoadingDialog(),
+            error: (message) {
+              context.dismissLoadingDialog();
+              context.showErrorMessage(message);
+              context.pop();
+            },
+          );
+        },
+        child: BlocBuilder<ProductMeBloc, ProductMeState>(
+          builder: (context, state) => state.maybeWhen(
+            orElse: () => const SizedBox.shrink(),
+            loading: () => const CustomShimmerList(length: 4),
+            empty: () => Padding(
+              padding: EdgeInsets.only(top: context.deviceHeight / 4),
+              child: const Center(child: EmptyState()),
             ),
-          ),
-          success: (products) => ListView.separated(
-            padding: PaddingAll.spacing20pt,
-            separatorBuilder: (context, index) =>
-                const SpaceHeight(AppDimens.spacing16pt),
-            itemCount: products.length,
-            itemBuilder: (context, index) => MenuTile(
-              data: products[index],
+            error: (message) => Padding(
+              padding: EdgeInsets.only(top: context.deviceHeight / 4),
+              child: ErrorState(
+                message: message,
+                onRefresh: () => context
+                    .read<ProductMeBloc>()
+                    .add(const ProductMeEvent.getData()),
+              ),
+            ),
+            success: (products) => ListView.separated(
+              padding: PaddingAll.spacing20pt,
+              separatorBuilder: (context, index) =>
+                  const SpaceHeight(AppDimens.spacing16pt),
+              itemCount: products.length,
+              itemBuilder: (context, index) => MenuTile(
+                data: products[index],
+              ),
             ),
           ),
         ),

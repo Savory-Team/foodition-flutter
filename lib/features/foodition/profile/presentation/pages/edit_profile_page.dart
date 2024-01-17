@@ -5,8 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../../components/components.dart';
-import '../../../../../core/assets/assets.dart';
-import '../../../../../core/constants/constants.dart';
+import '../../../../../core/core.dart';
 import '../../../core/core.dart';
 import '../managers/user/user_bloc.dart';
 
@@ -43,7 +42,9 @@ class EditProfilePage extends StatelessWidget {
               const SpaceHeight(AppDimens.spacing16pt),
               Center(
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    context.showErrorMessage('Fitur ini dalam pengembangan');
+                  },
                   child: const CustomText.h5('Ubah Foto Profile'),
                 ),
               ),

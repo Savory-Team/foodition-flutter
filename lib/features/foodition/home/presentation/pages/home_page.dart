@@ -16,95 +16,103 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<ProductBloc>().add(const ProductEvent.getData());
+    context.read<UserBloc>().add(const UserEvent.getData());
     context.dismissLoadingDialog();
     return SafeArea(
       child: Scaffold(
-        body: ListView(
-          children: [
-            Padding(
-              padding: PaddingAll.spacing20pt,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  BlocBuilder<UserBloc, UserState>(
-                    builder: (context, state) => state.maybeWhen(
-                      orElse: () => const SizedBox.shrink(),
-                      success: (data) => Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          CustomText.h4('Hello, ${data.name}'),
-                          LabelIcon(
-                            icon: const Icon(
-                              Icons.place_outlined,
-                              size: 14.0,
+        body: RefreshIndicator(
+          onRefresh: () async {
+            context.read<ProductBloc>().add(const ProductEvent.getData());
+            context.read<UserBloc>().add(const UserEvent.getData());
+          },
+          child: ListView(
+            children: [
+              Padding(
+                padding: PaddingAll.spacing20pt,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    BlocBuilder<UserBloc, UserState>(
+                      builder: (context, state) => state.maybeWhen(
+                        orElse: () => const SizedBox.shrink(),
+                        success: (data) => Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            CustomText.h4('Hello, ${data.name}'),
+                            LabelIcon(
+                              icon: const Icon(
+                                Icons.place_outlined,
+                                size: 14.0,
+                              ),
+                              data: data.address.addressFormat,
                             ),
-                            data:
-                                '${data.address.subdistrict}, ${data.address.city}',
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  IconButton(
-                    onPressed: () =>
-                        context.pushNamed(FooditionRouter.notification),
-                    icon: Assets.icons.notification.svg(width: 30.0),
-                  ),
+                    IconButton(
+                      onPressed: () =>
+                          context.pushNamed(FooditionRouter.notification),
+                      icon: Assets.icons.notification.svg(width: 30.0),
+                    ),
+                  ],
+                ),
+              ),
+              BannerSlider(
+                items: [
+                  Assets.images.banner.banner1.path,
+                  Assets.images.banner.banner2.path,
+                  Assets.images.banner.banner3.path,
                 ],
               ),
-            ),
-            BannerSlider(
-              items: [
-                Assets.images.banner.banner1.path,
-                Assets.images.banner.banner2.path,
-                Assets.images.banner.banner3.path,
-              ],
-            ),
-            BlocBuilder<ProductBloc, ProductState>(
-              builder: (context, state) {
-                return Padding(
-                  padding: PaddingAll.spacing20pt,
-                  child: SearchInput(
-                    onTap: () => state.maybeWhen(
-                      orElse: () => null,
-                      empty: () => context.showErrorMessage('Produk kosong..'),
-                      success: (products, favourites) => context
-                          .goNamed(FooditionRouter.search, extra: products),
+              BlocBuilder<ProductBloc, ProductState>(
+                builder: (context, state) {
+                  return Padding(
+                    padding: PaddingAll.spacing20pt,
+                    child: SearchInput(
+                      onTap: () => state.maybeWhen(
+                        orElse: () => null,
+                        empty: () =>
+                            context.showErrorMessage('Produk kosong..'),
+                        success: (products, favourites) => context
+                            .goNamed(FooditionRouter.search, extra: products),
+                      ),
                     ),
+                  );
+                },
+              ),
+              BlocBuilder<ProductBloc, ProductState>(
+                builder: (context, state) => state.maybeWhen(
+                  orElse: () => const SizedBox.shrink(),
+                  loading: () => const CustomShimmerGrid(length: 2),
+                  empty: () => const EmptyState(message: 'Produk tidak ada'),
+                  error: (message) => ErrorState(
+                    message: message,
+                    onRefresh: () => context
+                        .read<ProductBloc>()
+                        .add(const ProductEvent.getData()),
                   ),
-                );
-              },
-            ),
-            BlocBuilder<ProductBloc, ProductState>(
-              builder: (context, state) => state.maybeWhen(
-                orElse: () => const SizedBox.shrink(),
-                loading: () => const CustomShimmerGrid(length: 2),
-                empty: () => const EmptyState(),
-                error: (message) => ErrorState(
-                  message: message,
-                  onRefresh: () => context
-                      .read<ProductBloc>()
-                      .add(const ProductEvent.getData()),
-                ),
-                success: (products, favourites) => GridView.builder(
-                  padding: PaddingHorizontal.spacing20pt,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 12.0,
-                    mainAxisSpacing: 12.0,
-                    childAspectRatio: 0.5,
-                  ),
-                  itemCount: products.length,
-                  itemBuilder: (context, index) => ProductCard(
-                    data: products[index],
+                  success: (products, favourites) => GridView.builder(
+                    padding: PaddingHorizontal.spacing20pt,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 12.0,
+                      mainAxisSpacing: 12.0,
+                      childAspectRatio: 0.5,
+                    ),
+                    itemCount: products.length,
+                    itemBuilder: (context, index) => ProductCard(
+                      data: products[index],
+                    ),
                   ),
                 ),
               ),
-            ),
-            const SpaceHeight(20.0),
-          ],
+              const SpaceHeight(20.0),
+            ],
+          ),
         ),
       ),
     );

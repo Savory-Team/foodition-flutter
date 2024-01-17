@@ -16,6 +16,7 @@ class VerificationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isReSendOtp = ValueNotifier(false);
+    int otpResult = 0;
     return Scaffold(
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
@@ -43,12 +44,7 @@ class VerificationPage extends StatelessWidget {
                 'Enter 6 digit OTP that we sent to your email ${request.email} for verification'),
             const SpaceHeight(AppDimens.spacing24pt),
             PinInput(
-              onDone: (value) => context.read<AuthBloc>().add(AuthEvent.verify(
-                    VerifyRequest(
-                      email: request.email,
-                      otp: value,
-                    ),
-                  )),
+              onDone: (value) => otpResult = value,
             ),
             const SpaceHeight(AppDimens.spacing24pt),
             Row(
@@ -75,6 +71,16 @@ class VerificationPage extends StatelessWidget {
               ],
             ),
             const CountdownOtp(600),
+            const SpaceHeight(AppDimens.spacing32pt),
+            Button.filled(
+              onPressed: () => context.read<AuthBloc>().add(AuthEvent.verify(
+                    VerifyRequest(
+                      email: request.email,
+                      otp: otpResult,
+                    ),
+                  )),
+              label: 'Konfirmasi Sekarang',
+            ),
           ],
         ),
       ),
