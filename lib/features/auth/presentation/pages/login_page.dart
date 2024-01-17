@@ -16,11 +16,6 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
-
-    // FIXME: delete this initial text controller when app version is release
-    emailController.text = 'fauzan.abdillah2705@gmail.com';
-    passwordController.text = '123123123';
-
     return Scaffold(
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
