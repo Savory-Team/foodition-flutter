@@ -78,9 +78,9 @@ class _PinInputState extends State<PinInput> {
                 final code6 = _controllers[5].text;
                 final allCode = code1 + code2 + code3 + code4 + code5 + code6;
                 final pin = int.parse(allCode);
-                if (allCode.length == 6) {
-                  widget.onDone(pin);
-                }
+                // if (allCode.length == 6) {
+                widget.onDone(pin);
+                // }
               }
             },
           ),

@@ -37,9 +37,9 @@ class RegisterPage extends StatelessWidget {
             error: (message) {
               context.dismissLoadingDialog();
               context.showErrorMessage(message);
-              if (message.contains('Email sudah digunakan')) {
-                context.goNamed(AuthRouter.verification, extra: request);
-              }
+              // if (message.contains('Email sudah digunakan')) {
+              //   context.goNamed(AuthRouter.verification, extra: request);
+              // }
             },
           );
         },
