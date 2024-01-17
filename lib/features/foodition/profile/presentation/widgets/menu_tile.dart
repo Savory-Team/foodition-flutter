@@ -5,16 +5,16 @@ import 'package:go_router/go_router.dart';
 import '../../../../../components/components.dart';
 import '../../../../../core/core.dart';
 import '../../../core/foodition_router.dart';
-import '../../domain/models/menu_model.dart';
+import '../../../home/domain/models/product_model.dart';
 
 class MenuTile extends StatelessWidget {
-  final MenuModel data;
+  final ProductModel data;
   const MenuTile({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.goNamed(
+      onTap: () => context.pushNamed(
         FooditionRouter.productDetail,
         extra: data,
       ),
@@ -61,7 +61,8 @@ class MenuTile extends StatelessWidget {
                     ClipRRect(
                       borderRadius: AppBorderRadius.radius4pt,
                       child: ColoredBox(
-                        color: data.active ? AppColors.primary : AppColors.red,
+                        color:
+                            data.isActive ? AppColors.primary : AppColors.red,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: AppDimens.spacing8pt,

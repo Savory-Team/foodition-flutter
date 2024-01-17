@@ -6,6 +6,7 @@ class AddressModel {
   final String subdistrict;
   final String village;
   final String address;
+  final bool isResto;
 
   AddressModel({
     required this.labelAddress,
@@ -15,5 +16,6 @@ class AddressModel {
     required this.subdistrict,
     required this.village,
     required this.address,
+    this.isResto = false,
   });
 }

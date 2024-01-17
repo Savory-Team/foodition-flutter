@@ -18,6 +18,8 @@ class FooditionDepedency {
     locator.registerFactory(() => ProductBloc(locator()));
     locator.registerFactory(() => TransactionBloc(locator()));
     locator.registerFactory(() => UserBloc(locator()));
+    locator.registerFactory(() => RestoBloc(locator()));
+    locator.registerFactory(() => ProductMeBloc(locator()));
 
     /// [REPOSITORY]
     locator
@@ -28,6 +30,10 @@ class FooditionDepedency {
         () => TransactionRepositoryImpl(locator()));
     locator.registerLazySingleton<UserRepository>(
         () => UserRepositoryImpl(locator()));
+    locator.registerLazySingleton<RestoRepository>(
+        () => RestoRepositoryImpl(locator()));
+    locator.registerLazySingleton<ProductMeRepository>(
+        () => ProductMeRepositoryImpl(locator()));
 
     /// [DATASOURCE]
     locator.registerLazySingleton<MlRemoteDatasource>(() => MlRemoteDatasource(
@@ -38,5 +44,9 @@ class FooditionDepedency {
         () => TransactionRemoteDatasource(ApiClient(useToken: true).instance));
     locator.registerLazySingleton<UserRemoteDatasource>(
         () => UserRemoteDatasource(ApiClient(useToken: true).instance));
+    locator.registerLazySingleton<RestoRemoteDatasource>(
+        () => RestoRemoteDatasource(ApiClient(useToken: true).instance));
+    locator.registerLazySingleton<ProductMeRemoteDatasource>(
+        () => ProductMeRemoteDatasource(ApiClient(useToken: true).instance));
   }
 }

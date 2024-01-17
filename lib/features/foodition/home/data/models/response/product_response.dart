@@ -26,7 +26,7 @@ class ProductResponse {
   final String? restoId;
   final String? namaRestoran;
   final String? lokasi;
-  final bool isFavorite;
+  final bool? isFavorite;
   final String? rating;
 
   ProductResponse({
@@ -41,7 +41,7 @@ class ProductResponse {
     this.restoId,
     this.namaRestoran,
     this.lokasi,
-    this.isFavorite = false,
+    this.isFavorite,
     this.rating,
   });
 
@@ -54,13 +54,14 @@ class ProductResponse {
       categories: kategori ?? [],
       address: lokasi ?? '',
       rate: double.tryParse(rating ?? '') ?? 0,
-      isFavourite: isFavorite,
+      isFavourite: isFavorite ?? false,
       stock: porsi ?? 0,
       price: price,
       description:
           'Makanan ini ${status ? 'layak' : 'tidak layak'} untuk dimakan dan ini ${type ? 'cuma seharga ${price.currencyFormatRp}' : 'gratis untuk kamu'}.',
       prices: type ? [price, price + 5000, price + 10000, price + 30000] : [],
       isPaid: type,
+      isActive: active,
       paymentCategories: [
         PaymentCategory(
           name: 'Default',

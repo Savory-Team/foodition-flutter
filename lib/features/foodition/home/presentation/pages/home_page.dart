@@ -67,6 +67,7 @@ class HomePage extends StatelessWidget {
                   child: SearchInput(
                     onTap: () => state.maybeWhen(
                       orElse: () => null,
+                      empty: () => context.showErrorMessage('Produk kosong..'),
                       success: (products, favourites) => context
                           .goNamed(FooditionRouter.search, extra: products),
                     ),

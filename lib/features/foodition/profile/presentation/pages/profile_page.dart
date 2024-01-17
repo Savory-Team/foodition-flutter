@@ -98,7 +98,7 @@ class ProfilePage extends StatelessWidget {
                             orElse: () => null,
                             success: (data) => context.pushNamed(
                               FooditionRouter.editAddress,
-                              extra: data,
+                              extra: data.address,
                             ),
                           ),
                           leading: Assets.icons.location.svg(),

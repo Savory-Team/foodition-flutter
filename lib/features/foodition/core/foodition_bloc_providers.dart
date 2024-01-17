@@ -12,5 +12,7 @@ class FooditionBlocProviders {
     BlocProvider<ProductBloc>(create: (_) => locator()),
     BlocProvider<TransactionBloc>(create: (_) => locator()),
     BlocProvider<UserBloc>(create: (_) => locator()),
+    BlocProvider<RestoBloc>(create: (_) => locator()),
+    BlocProvider<ProductMeBloc>(create: (_) => locator()),
   ];
 }

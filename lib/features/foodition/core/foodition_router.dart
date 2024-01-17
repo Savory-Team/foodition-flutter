@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:go_router/go_router.dart';
 
 import '../home/domain/models/models.dart';
 import '../home/presentation/pages/pages.dart';
-import '../profile/domain/models/user_model.dart';
+import '../profile/domain/models/models.dart';
 import '../profile/presentation/pages/pages.dart';
 
 part 'enums/root_tab.dart';
@@ -112,7 +114,7 @@ class FooditionRouter {
           name: editAddress,
           path: editAddressPath,
           builder: (context, state) =>
-              EditAddressPage((state.extra as UserModel).address),
+              EditAddressPage(state.extra as AddressModel),
         ),
         GoRoute(
           name: editPassword,
@@ -137,7 +139,8 @@ class FooditionRouter {
                 GoRoute(
                   name: addMenu,
                   path: addMenuPath,
-                  builder: (context, state) => const AddMenuPage(),
+                  builder: (context, state) =>
+                      AddMenuPage(image: state.extra as File),
                 ),
               ],
             ),
@@ -149,7 +152,8 @@ class FooditionRouter {
             GoRoute(
               name: editRestaurant,
               path: editRestaurantPath,
-              builder: (context, state) => const EditRestaurantPage(),
+              builder: (context, state) =>
+                  EditRestaurantPage(state.extra as RestoModel),
             ),
             GoRoute(
               name: notificationRestaurant,

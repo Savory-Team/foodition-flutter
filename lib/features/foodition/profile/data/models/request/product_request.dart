@@ -7,7 +7,7 @@ class ProductRequest {
   final bool status;
   final bool type;
   final int portion;
-  final int category;
+  final String category;
 
   ProductRequest({
     required this.image,
@@ -17,14 +17,16 @@ class ProductRequest {
     required this.category,
   });
 
-  Map<String, dynamic> toMap() {
-    final bytes = image.readAsBytesSync();
-    return {
-      'image': MultipartFile.fromBytes(bytes),
+  Future<FormData> toFormData() async {
+    return FormData.fromMap({
+      'image': await MultipartFile.fromFile(
+        image.path,
+        filename: 'photo-resto.jpg',
+      ),
       'status': status,
       'type': type,
       'porsi': portion,
       'kategori': category,
-    };
+    });
   }
 }

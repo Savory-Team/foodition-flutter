@@ -18,6 +18,7 @@ class ProductModel {
   final PaymentMethod paymentMethod;
   final PickUpMethod pickUpMethod;
   final bool isPaid;
+  final bool isActive;
 
   ProductModel({
     required this.id,
@@ -35,9 +36,11 @@ class ProductModel {
     this.paymentMethod = PaymentMethod.cod,
     this.pickUpMethod = PickUpMethod.self,
     required this.isPaid,
+    required this.isActive,
   });
 
   String get priceFormat => price.currencyFormatRp;
   List<String> get pricesFormat =>
       prices.map((e) => e.currencyFormatRp).toList();
+  String get status => isActive ? 'Aktif' : 'Tidak Aktif';
 }

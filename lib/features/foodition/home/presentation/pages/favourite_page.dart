@@ -20,7 +20,10 @@ class FavouritePage extends StatelessWidget {
         builder: (context, state) => state.maybeWhen(
           orElse: () => const SizedBox.shrink(),
           loading: () => const CustomShimmerList(length: 4),
-          empty: () => const EmptyState(),
+          empty: () => Padding(
+            padding: EdgeInsets.only(top: context.deviceHeight / 4),
+            child: const Center(child: EmptyState()),
+          ),
           error: (message) => ErrorState(
             message: message,
             onRefresh: () =>
