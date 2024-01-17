@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../home/domain/enums/notification_type.dart';
-import '../../../home/domain/models/notification_model.dart';
+import '../../../../../components/state/empty_state.dart';
+import '../../../../../core/core.dart';
 import '../../../home/presentation/widgets/notification_tile.dart';
 
 class NotificationRestaurantPage extends StatelessWidget {
@@ -9,32 +9,24 @@ class NotificationRestaurantPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final notifications = [
-      NotificationModel(
-        type: NotificationType.transaction,
-        label: 'Transaksi 1',
-        message: 'Anda telah melakukan transaksi',
-        date: DateTime.now().subtract(const Duration(seconds: 30)),
-      ),
-      NotificationModel(
-        type: NotificationType.promotion,
-        label: 'Promosi 1',
-        message: 'Diskon 50% untuk produk tertentu',
-        date: DateTime.now().subtract(const Duration(hours: 2)),
-      ),
-    ];
+    final notifications = [];
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Notifikasi Restoran'),
       ),
-      body: ListView.separated(
-        separatorBuilder: (context, index) => const Divider(),
-        itemCount: notifications.length,
-        itemBuilder: (context, index) => NotificationTile(
-          data: notifications[index],
-        ),
-      ),
+      body: notifications.isEmpty
+          ? Padding(
+              padding: EdgeInsets.only(top: context.deviceHeight / 4),
+              child: const EmptyState(),
+            )
+          : ListView.separated(
+              separatorBuilder: (context, index) => const Divider(),
+              itemCount: notifications.length,
+              itemBuilder: (context, index) => NotificationTile(
+                data: notifications[index],
+              ),
+            ),
     );
   }
 }

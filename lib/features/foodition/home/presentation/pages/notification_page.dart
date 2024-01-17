@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../domain/enums/enums.dart';
-import '../../domain/models/models.dart';
+import '../../../../../components/state/empty_state.dart';
+import '../../../../../core/core.dart';
 import '../widgets/notification_tile.dart';
 
 class NotificationPage extends StatelessWidget {
@@ -9,32 +9,24 @@ class NotificationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final notifications = [
-      NotificationModel(
-        type: NotificationType.transaction,
-        label: 'Transaksi 1',
-        message: 'Anda telah melakukan transaksi',
-        date: DateTime.now().subtract(const Duration(seconds: 30)),
-      ),
-      NotificationModel(
-        type: NotificationType.promotion,
-        label: 'Promosi 1',
-        message: 'Diskon 50% untuk produk tertentu',
-        date: DateTime.now().subtract(const Duration(hours: 2)),
-      ),
-    ];
+    final notifications = [];
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Notifikasi'),
       ),
-      body: ListView.separated(
-        separatorBuilder: (context, index) => const Divider(),
-        itemCount: notifications.length,
-        itemBuilder: (context, index) => NotificationTile(
-          data: notifications[index],
-        ),
-      ),
+      body: notifications.isEmpty
+          ? Padding(
+              padding: EdgeInsets.only(top: context.deviceHeight / 4),
+              child: const EmptyState(),
+            )
+          : ListView.separated(
+              separatorBuilder: (context, index) => const Divider(),
+              itemCount: notifications.length,
+              itemBuilder: (context, index) => NotificationTile(
+                data: notifications[index],
+              ),
+            ),
     );
   }
 }
