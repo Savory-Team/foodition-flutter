@@ -32,6 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<_Verify>((event, emit) async {
+      emit(const _Loading());
       final result = await _repository.verify(event.request);
       result.match(
         (error) => emit(_Error(message: error)),

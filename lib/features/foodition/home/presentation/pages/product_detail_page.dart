@@ -232,11 +232,11 @@ class ProductDetailPage extends StatelessWidget {
                       ),
                       const SpaceHeight(AppDimens.spacing24pt),
                     ],
-                    const CustomText.h6('Keterangan'),
+                    const CustomText.h3('Keterangan'),
                     const SpaceHeight(AppDimens.spacing12pt),
                     Row(
                       children: [
-                        const CustomText.h3('Pembayaran'),
+                        const CustomText.h6('Pembayaran'),
                         const Spacer(),
                         CustomText.h6(data.paymentMethod.value),
                       ],

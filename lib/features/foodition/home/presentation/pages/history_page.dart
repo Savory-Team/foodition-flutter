@@ -21,12 +21,18 @@ class HistoryPage extends StatelessWidget {
         builder: (context, state) => state.maybeWhen(
           orElse: () => const SizedBox.shrink(),
           loading: () => const CustomShimmerList(length: 3),
-          empty: () => const EmptyState(),
-          error: (message) => ErrorState(
-            message: message,
-            onRefresh: () => context
-                .read<TransactionBloc>()
-                .add(const TransactionEvent.getData()),
+          empty: () => Padding(
+            padding: EdgeInsets.only(top: context.deviceHeight / 4),
+            child: const EmptyState(),
+          ),
+          error: (message) => Padding(
+            padding: EdgeInsets.only(top: context.deviceHeight / 4),
+            child: ErrorState(
+              message: message,
+              onRefresh: () => context
+                  .read<TransactionBloc>()
+                  .add(const TransactionEvent.getData()),
+            ),
           ),
           success: (histories) => ListView.separated(
             itemCount: histories.length,

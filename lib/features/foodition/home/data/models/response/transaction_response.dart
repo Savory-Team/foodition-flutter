@@ -18,7 +18,7 @@ class TransactionResponse {
   final String? transactionId;
   final String? namaRestoran;
   final String? image;
-  final String? price;
+  final int? price;
   final String? tanggal;
   final String? status;
   final String? alamatRestoran;
@@ -39,7 +39,7 @@ class TransactionResponse {
     return HistoryModel(
       id: transactionId ?? '-',
       name: namaRestoran ?? '-',
-      price: int.tryParse(price ?? '-') ?? 0,
+      price: price ?? 0,
       storeName: namaRestoran ?? '-',
       storeAddress: alamatRestoran ?? '-',
       imageUrl: image ?? '-',

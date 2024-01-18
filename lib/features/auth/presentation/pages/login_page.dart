@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
             successListen: () {
               context.dismissLoadingDialog();
               context.goNamed(FooditionRouter.root);
-              context.showSuccessMessage('Berhasil Login!');
+              context.showSuccessMessage('Berhasil!');
             },
             error: (message) {
               context.dismissLoadingDialog();
