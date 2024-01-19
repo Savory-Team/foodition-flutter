@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../../../components/components.dart';
 import '../../../../../core/core.dart';
+import '../../../core/core.dart';
 import '../../data/models/request/requests.dart';
 import '../../domain/models/models.dart';
 import '../managers/resto/resto_bloc.dart';
@@ -59,12 +60,12 @@ class _EditRestaurantPageState extends State<EditRestaurantPage> {
             loading: () => context.showLoadingDialog(),
             success: (data) {
               context.dismissLoadingDialog();
-              context.pop();
+              context.goNamed(FooditionRouter.myStore);
               context.showSuccessMessage('Berhasil diperbarui!');
             },
             error: (message) {
               context.dismissLoadingDialog();
-              context.pop();
+              context.goNamed(FooditionRouter.myStore);
               context.showErrorMessage(message);
             },
           );

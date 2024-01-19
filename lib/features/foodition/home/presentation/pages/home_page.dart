@@ -38,7 +38,11 @@ class HomePage extends StatelessWidget {
                         success: (data) => Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CustomText.h4('Hello, ${data.name}'),
+                            SizedBox(
+                              width: context.deviceWidth - 100.0,
+                              child: CustomText.h4('Hello, ${data.name}',
+                                  overflow: TextOverflow.ellipsis),
+                            ),
                             LabelIcon(
                               icon: const Icon(
                                 Icons.place_outlined,
